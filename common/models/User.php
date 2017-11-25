@@ -25,6 +25,8 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    public $password;
+    public $re_password;
 
 
     /**
@@ -53,6 +55,16 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['username','password','re_password'], 'required'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            ['password','string','length'=>[6,15]],
+            [['auth_key'], 'string', 'max' => 32],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['password_reset_token'], 'unique'],
+            [['re_password'],'compare','compareAttribute'=>'password'],
+            ['username', 'match','pattern'=>'/^[\x{ff08}-\x{ff09}a-zA-Z\d\x{4e00}-\x{9fa5}]{2,50}$/u','message'=>'用户名由字母，数字，括号和汉字组成且在2-50字符内。'],
         ];
     }
 

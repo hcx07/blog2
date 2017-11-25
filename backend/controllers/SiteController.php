@@ -1,11 +1,11 @@
 <?php
 namespace backend\controllers;
 
+use backend\models\LoginForm;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
 
 /**
  * Site controller
@@ -20,10 +20,12 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only' => ['logout', 'signup'],
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
                         'allow' => true,
+                        'roles' => ['?'],
                     ],
                     [
                         'actions' => ['logout', 'index'],
@@ -50,6 +52,12 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'minLength'=>5,
+                'maxLength'=>5,
+            ],
         ];
     }
 
@@ -60,6 +68,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user->isGuest){
+            return $this->redirect(['site/login']);
+        }
         return $this->render('index');
     }
 
@@ -71,21 +82,14 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect(['site/index']);
         }
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-
-            $model->password = '';
-            return $this->render('login', [
-                'model' => $model,
-            ]);
+            return $this->redirect(['site/index']);
         }
+        return $this->renderPartial('login',['model'=>$model]);
     }
-
     /**
      * Logout action.
      *

@@ -1,80 +1,166 @@
-<?php
-
-/* @var $this \yii\web\View */
-/* @var $content string */
-
-use backend\assets\AppAsset;
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+﻿<?php
 use common\widgets\Alert;
-
-AppAsset::register($this);
+\backend\assets\AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="favicon.ico" >
+<link rel="Shortcut Icon" href="favicon.ico" />
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+
+<title>木鸟</title>
 </head>
 <body>
 <?php $this->beginBody() ?>
+<header class="navbar-wrapper">
+	<div class="navbar navbar-fixed-top">
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/index.php">木鸟·后台管理系统</a>
+			<span class="logo navbar-slogan f-l mr-10 hidden-xs">v1.0</span>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
+			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+				<ul class="cl">
+                    <li>
+                        <?php
+                        if(!Yii::$app->user->isGuest){
+                            echo
+                            \yii\helpers\Html::beginForm(['/site/logout'], 'post');
+                            echo \yii\helpers\Html::submitButton(
+                                '安全退出 (' . Yii::$app->user->identity->username . ')',
+                                ['class' => 'btn btn-link logout']
+                            );
+                            echo \yii\helpers\Html::endForm();
+                        }else{
+                            echo '<a href="'.Yii::$app->request->hostInfo.'/index.php?r=site/login">登录</a>';
+                        }
+                        ?>
+                    </li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+</div>
+</header>
+<aside class="Hui-aside">
+    <div class="menu_dropdown bk_2">
+        <dl id="menu-article">
+            <dt><span class="glyphicon glyphicon-list-alt"></span> 文章管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=article/index"
+                           title="文章列表">文章列表</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-picture">
+            <dt><span class="glyphicon glyphicon-list"></span> 分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=article/cate" title="分类列表">分类列表</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-picture">
+            <dt ><span class="glyphicon glyphicon-envelope"></span> 留言管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd >
+                <ul>
+                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=message/index" title="留言列表">留言列表</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-picture">
+            <dt ><span class="glyphicon glyphicon-paperclip"></span> 友情链接管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd >
+                <ul>
+                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=link/index" title="链接列表">链接列表</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-picture">
+            <dt><span class="glyphicon glyphicon-pencil"></span> 操作日志<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd >
+                <ul>
+                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=log/index" title="操作日志列表">操作日志列表</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-picture">
+            <dt><span class="glyphicon glyphicon-user"></span> 管理员<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd >
+                <ul>
+                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=user/index" title="管理员列表">管理员列表</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
     </div>
-</footer>
+</aside>
+<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+<?=$content?>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript">
+    $(function(){
 
-<?php $this->endBody() ?>
+        $('.table-sort').dataTable({
+            "aaSorting": [[ 0, "desc" ]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+//                {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
+            ]
+        });
+        $('.table-sort tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+        $('#DataTables_Table_0_length').hide();
+        $('#DataTables_Table_0_info').hide();
+        $('#DataTables_Table_0_paginate').hide();
+        $('#DataTables_Table_0_filter').hide();
+    });
+    /*用户-添加*/
+    function member_add(title,url,w,h){
+        layer_show(title,url,w,h);
+    }
+</script>
 </body>
 </html>
-<?php $this->endPage() ?>
