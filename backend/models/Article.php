@@ -33,9 +33,10 @@ class Article extends \yii\db\ActiveRecord
         return [
             [['cate_id', 'views'], 'integer'],
             [['content'], 'string'],
-            [['intime'], 'safe'],
+            [['update_time'], 'default','value'=>time()],
             [['title'], 'string', 'max' => 50],
             [['author'], 'string', 'max' => 20],
+            [['author','title'], 'required'],
         ];
     }
 
@@ -53,5 +54,9 @@ class Article extends \yii\db\ActiveRecord
             'intime' => 'Intime',
             'views' => 'Views',
         ];
+    }
+
+    public function getCate(){
+        return $this->hasOne(Category::className(),['cate_id'=>'cate_id']);
     }
 }
