@@ -17,6 +17,7 @@ use Yii;
  */
 class Article extends \yii\db\ActiveRecord
 {
+    public $cate_name;
     /**
      * @inheritdoc
      */
