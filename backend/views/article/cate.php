@@ -32,8 +32,8 @@
                             <td><?=$item->order_no?></td>
                             <td><?=$item->cate_name?></td>
                             <td>
-                                <a title="修改" href="javascript:;" onclick="member_edit('修改','<?=\yii\helpers\Url::toRoute(['article/edit-date','article_id'=>$item->cate_id])?>','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                                <a title="删除" href="javascript:;" onclick="member_show(this,'<?=\yii\helpers\Url::toRoute(['article/cate-del','article_id'=>$item->cate_id])?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe725;</i></a>
+                                <a title="修改" href="javascript:;" onclick="member_edit('修改','<?=\yii\helpers\Url::toRoute(['article/cate-edit','cate_id'=>$item->cate_id])?>','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                                <a title="删除" href="javascript:;" onclick="member_show(this,'<?=\yii\helpers\Url::toRoute(['article/cate-del','cate_id'=>$item->cate_id])?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -52,74 +52,23 @@
     </div>
 </section>
 <script type="text/javascript">
-    $('.del').on('click',function(){
-        var id=$(this).attr('name');
-        layer.confirm('确定要删除吗？', {
-            btn: ['确定','取消'] //按钮
-        }, function(){
-            window.location.href = "/index.php?r=article/cate-del&id="+id;
-            var index = layer.load(1, {
-                shade: [0.1,'#fff'] //0.1透明度的白色背景
-            });
-        });
-    });
-
-    /*资讯-添加*/
-    function article_add(title,url,w,h){
-        var index = layer.open({
-            type: 2,
-            title: title,
-            content: url
-        });
-        layer.full(index);
-    }
 
     /*用户-添加*/
     function member_add(title,url,w,h){
-        layer_show(title,url,w,h);
-    }
-    /*用户-查看*/
-    function member_show(title,url,id,w,h){
         layer_show(title,url,w,h);
     }
     /*用户-编辑*/
     function member_edit(title,url,id,w,h){
         layer_show(title,url,w,h);
     }
-    /*密码-修改*/
-    function change_password(title,url,id,w,h){
-        layer_show(title,url,w,h);
-    }
-    /*用户-删除*/
+
     function member_show(obj,id){
-        layer.confirm('确认要显示吗？',function(index){
-            $.ajax({
-                type: 'POST',
-                url: id,
-                dataType: 'json',
-                success: function(data){
-                    $(obj).parents("tr").remove();
-                    layer.msg('已显示!',{icon:1,time:1000});
-                },
-                error:function(data) {
-                    console.log(data.msg);
-                },
-            });
-        });
-    }
-    function member_hide(obj,id){
-        layer.confirm('确认要隐藏吗？',function(index){
-            $.ajax({
-                type: 'POST',
-                url: id,
-                dataType: 'json',
-                success: function(data){
-                    $(obj).parents("tr").remove();
-                    layer.msg('已隐藏!',{icon:1,time:1000});
-                },
-                error:function(data) {
-                    console.log(data.msg);
-                },
+        layer.confirm('确定要删除吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            window.location.href = id;
+            var index = layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
             });
         });
     }
