@@ -1,7 +1,4 @@
-﻿<?php
-use common\widgets\Alert;
-\backend\assets\AppAsset::register($this);
-?>
+﻿
 <?php $this->beginPage() ?>
 <!DOCTYPE HTML>
 <html>

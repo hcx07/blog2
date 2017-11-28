@@ -30,6 +30,7 @@ class Category extends \yii\db\ActiveRecord
         return [
             [['order_no'], 'integer'],
             [['cate_name'], 'string', 'max' => 30],
+            [['cate_name'], 'unique'],
         ];
     }
 

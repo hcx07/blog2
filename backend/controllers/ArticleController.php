@@ -76,4 +76,24 @@ class ArticleController extends BackendController{
         }
         return $this->renderPartial('add', ['model' => $model,'category'=>$category]);
     }
+
+    public function actionCate(){
+        $query=Category::find();
+        $total=$query->count();
+        $page=new Pagination([
+            'totalCount'=>$total,
+            'defaultPageSize'=>10,
+        ]);
+        $model=$query->offset($page->offset)->limit($page->limit)->orderBy(['cate_id'=>SORT_ASC])->all();
+        return $this->render('cate',['model'=>$model,'page'=>$page]);
+    }
+    public function actionCateAdd(){
+        $model = new Category();
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
+            $model->save();
+            \Yii::$app->session->setFlash('success', '添加成功！');
+            exit;
+        }
+        return $this->renderPartial('cate-add', ['model' => $model]);
+    }
 }
