@@ -10,6 +10,38 @@
     <div class="Hui-article">
         <article class="cl pd-20">
             <?=\common\widgets\Alert::widget()?>
+            <div class="text-c">
+                <?php $form = \yii\widgets\ActiveForm::begin([
+                    'method' => 'get',
+                    'action'=>\yii\helpers\Url::to(['article/index']),
+                    'options'=>['class'=>'form-inline']
+                ]); ?>
+				<span class="select-box inline">
+				<select name="cate_id" class="select">
+					<option value="0">全部分类</option>
+                    <?php
+                        foreach ($cate as $item):?>
+                            <option value="<?=$item['cate_id']?>" <?php if(isset($return['cate_id']) && $return['cate_id']==$item['cate_id']){
+                                echo 'selected';
+                            }?>><?=$item['cate_name']?></option>
+                    <?php endforeach;?>
+				</select>
+				</span>
+                创建时间：
+                <input <?php if(isset($return['start'])){?>
+                        value="<?=$return['start']?>"
+                        <?php }?>   type="text" name="start" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}'})" id="logmin" class="input-text Wdate" style="width:120px;">
+                -
+                <input <?php if(isset($return['end'])){?>
+                        value="<?=$return['end']?>"
+                        <?php }?>   type="text" name="end" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d'})" id="logmax" class="input-text Wdate" style="width:120px;">
+                <input
+                    <?php if(isset($return['title'])){?>
+                        value="<?=$return['title']?>"
+                        <?php }?>   type="text" name="title" id="" placeholder=" 标题" style="width:250px" class="input-text">
+                <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+                <?php \yii\widgets\ActiveForm::end(); ?>
+            </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20">
             <span class="l">
                 <a href="<?=\yii\helpers\Url::toRoute(['article/add'])?>"
@@ -42,8 +74,12 @@
                             <td><?=$item->status==1?'<span class="label label-success radius">正常</span>':'<span class="label label-danger radius">隐藏</span>'?></td>
                             <td>
                                 <a title="修改" href="javascript:;" onclick="member_edit('修改','<?=\yii\helpers\Url::toRoute(['article/edit','article_id'=>$item->article_id])?>','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                                <a title="显示" href="javascript:;" onclick="member_show(this,'<?=\yii\helpers\Url::toRoute(['article/show','article_id'=>$item->article_id])?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe725;</i></a>
-                                <a title="隐藏" href="javascript:;" onclick="member_hide(this,'<?=\yii\helpers\Url::toRoute(['article/hide','article_id'=>$item->article_id])?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe631;</i></a>
+                                <?php
+                                    if($item->status==1){?>
+                                        <a title="隐藏" href="javascript:;" onclick="member_hide(this,'<?=\yii\helpers\Url::toRoute(['article/hide','article_id'=>$item->article_id])?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe631;</i></a>
+                                    <?php }else{?>
+                                        <a title="显示" href="javascript:;" onclick="member_show(this,'<?=\yii\helpers\Url::toRoute(['article/show','article_id'=>$item->article_id])?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe725;</i></a>
+                                <?php }?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

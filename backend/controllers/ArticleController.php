@@ -18,14 +18,34 @@ class ArticleController extends BackendController
      */
     public function actionIndex()
     {
+        $return=[];
         $query = Article::find()->innerJoin(Category::tableName(), "category.cate_id=article.cate_id");
+        if($cate_id=\Yii::$app->request->get('cate_id')){
+            $return['cate_id']=$cate_id;
+            $query->andWhere(['category.cate_id'=>$cate_id]);
+        }
+        if($title=\Yii::$app->request->get('title')){
+            $return['title']=$title;
+            $query->andWhere(['like','article.title',$title]);
+        }
+        if($start=\Yii::$app->request->get('start')){
+            $return['start']=$start;
+            $query->andWhere(['>=','article.created_time',strtotime($start)]);
+        }
+        if($end=\Yii::$app->request->get('end')){
+            $return['end']=$end;
+            $query->andWhere(['<=','article.created_time',strtotime($end)]);
+        }
+
+
         $total = $query->count();
         $page = new Pagination([
             'totalCount' => $total,
             'defaultPageSize' => 10,
         ]);
         $model = $query->offset($page->offset)->limit($page->limit)->orderBy(['article.created_time' => SORT_ASC])->all();
-        return $this->render('index', ['model' => $model, 'page' => $page]);
+        $cate = Category::find()->select('cate_id,cate_name')->asArray()->all();
+        return $this->render('index', ['model' => $model, 'page' => $page,'cate'=>$cate,'return'=>$return]);
     }
 
     /**
@@ -167,5 +187,9 @@ class ArticleController extends BackendController
         $model->delete();
         \Yii::$app->session->setFlash('success', '删除成功！');
         return $this->redirect(['article/cate']);
+    }
+
+    public function actionTest(){
+        return $this->renderPartial('test');
     }
 }
