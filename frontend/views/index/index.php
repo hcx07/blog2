@@ -14,9 +14,8 @@
                     <div class="blog-post">
                         <?php foreach ($model as $item):?>
                             <div class="panel">
-                                <div id="index-post-img"><a href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>">
-                                        <div class="item-thumb" style="background-image: url(ihewro/images/1050773382.png)"></div>
-                                    </a></div>
+                                <div id="index-post-img">
+                                    <a href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>"></a></div>
                                 <div class="post-meta wrapper-lg">
                                     <h2 class="m-t-none index-post-title"><a
                                                 href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>"><?=$item->title?></a></h2>
