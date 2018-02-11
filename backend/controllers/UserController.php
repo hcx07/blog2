@@ -11,6 +11,7 @@ use yii\data\Pagination;
 use yii\web\Controller;
 
 class UserController extends BackendController {
+
     public function actionIndex()
     {
         $query=User::find();
@@ -46,7 +47,7 @@ class UserController extends BackendController {
                 $model->password_hash=$hash;
                 $model->save();
                 \Yii::$app->session->setFlash('success', '添加成功！');
-                return $this->redirect(['admin-user/index']);
+                return $this->redirect(['user/index']);
             }
         }
         return $this->render('add', ['model' => $model]);
@@ -54,6 +55,6 @@ class UserController extends BackendController {
     public function actionDel($id){
         $model = User::findOne(['id'=>$id]);
         $model->delete();
-        return $this->redirect(['admin-user/index']);
+        return $this->redirect(['user/index']);
     }
 }

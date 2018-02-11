@@ -47,7 +47,7 @@ function layer_show(title,url,w,h){
 	if (h == null || h == '') {
 		h=($(window).height() - 50);
 	};
-	layer.open({
+	var index=layer.open({
 		type: 2,
 		area: [w+'px', h +'px'],
 		fix: false, //不固定
@@ -56,6 +56,7 @@ function layer_show(title,url,w,h){
 		title: title,
 		content: url
 	});
+	return index;
 }
 
 /*关闭弹出框口*/

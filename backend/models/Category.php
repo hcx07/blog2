@@ -30,6 +30,7 @@ class Category extends \yii\db\ActiveRecord
         return [
             [['order_no'], 'integer'],
             [['cate_name'], 'string', 'max' => 30],
+            [['cate_name'], 'unique'],
         ];
     }
 
@@ -39,7 +40,7 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'cate_id' => 'ID',
             'cate_name' => 'Cate Name',
             'order_no' => 'Order No',
         ];

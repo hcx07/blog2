@@ -52,7 +52,7 @@ class Article extends \yii\db\ActiveRecord
             'cate_id' => 'Cate ID',
             'author' => 'Author',
             'content' => 'Content',
-            'intime' => 'Intime',
+            'created_time' => 'Intime',
             'views' => 'Views',
         ];
     }
