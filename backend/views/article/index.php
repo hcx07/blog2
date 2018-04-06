@@ -44,8 +44,7 @@
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20">
             <span class="l">
-                <a href="<?=\yii\helpers\Url::toRoute(['article/add'])?>"
-                   class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加文章</a>
+                <a href="<?=\yii\helpers\Url::toRoute(['article/add'])?>" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加文章</a>
             </span>
             </div>
             <div class="mt-20">

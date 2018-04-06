@@ -64,21 +64,24 @@ class ArticleController extends BackendController
             \Yii::$app->session->setFlash('error', '还没有文章分类哟！');
             return $this->redirect(['cate/add']);
         }
-        if ($model->load(\Yii::$app->request->post())) {
-            $post = \Yii::$app->request->post();
-            if (empty($post['content']) || (!$post['content'])) {
-                \Yii::$app->session->setFlash('error', '必须要输入内容哦！');
+        if($post=\Yii::$app->request->post()){
+            $post['content']=html_entity_decode(trim($post['content']));
+            if(empty($post['content'])){
+                \Yii::$app->session->setFlash('error', '请输入文章内容！');
                 return $this->redirect(['article/add']);
             }
-            if ($model->validate()) {
-                $model->content = $post['content'];
-                $model->created_time = time();
+            if($model->load($post) && $model->validate()){
+                $model->created_time=time();
+                $model->content=$post['content'];
                 $model->save();
                 \Yii::$app->session->setFlash('success', '添加成功！');
                 return $this->redirect(['article/index']);
+            }else{
+                \Yii::$app->session->setFlash('error', $model->getFirstErrors());
+                return $this->redirect(['article/add']);
             }
         }
-        return $this->renderPartial('add', ['model' => $model, 'category' => $category]);
+        return $this->render('add', ['model' => $model, 'category' => $category]);
     }
 
     /**
@@ -106,7 +109,6 @@ class ArticleController extends BackendController
             }
             if ($model->validate()) {
                 $model->content = $post['content'];
-                $model->created_time = time();
                 $model->save();
                 \Yii::$app->session->setFlash('success', '修改成功！');
                 return $this->redirect(['article/index']);
