@@ -33,3 +33,7 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
+/backend/runtime
+/frontend/runtime
+/backend/assets
+/frontend/assets
