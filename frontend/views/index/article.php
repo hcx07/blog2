@@ -104,9 +104,9 @@ use yii\helpers\Html;
                                                 <p class="text-center"><strong
                                                             class="article__reward-text">扫一扫支付</strong></p>
                                                 <div class="tab-content">
-                                                    <?php echo Html::img('@web/ihewro/picture/7461453895224b6e9767c36f3ecdf416.gif', ['class' => 'pay-img tab-pane fade in active', 'aria-labelledby' => 'alipay-tab', 'id' => 'alipay_author', 'role' => 'tabpanel']) ?>
+                                                    <?php echo Html::img('@web/common/img/ali.png', ['class' => 'pay-img tab-pane fade in active', 'aria-labelledby' => 'alipay-tab', 'id' => 'alipay_author', 'role' => 'tabpanel']) ?>
 
-                                                    <?php echo Html::img('@web/ihewro/picture/fe160b1488b64834afdcf2ec0f330206.gif', ['class' => 'pay-img tab-pane fade', 'aria-labelledby' => 'alipay-tab', 'id' => 'wechatpay_author', 'role' => 'tabpanel']) ?>
+                                                    <?php echo Html::img('@web/common/img/we.png', ['class' => 'pay-img tab-pane fade', 'aria-labelledby' => 'alipay-tab', 'id' => 'wechatpay_author', 'role' => 'tabpanel']) ?>
                                                 </div>
                                                 <div class="article__reward-border mb20 mt10"></div>
                                                 <div class="text-center" role="tablist">

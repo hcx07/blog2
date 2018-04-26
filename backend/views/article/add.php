@@ -26,6 +26,7 @@ use yii\helpers\Url;
             <?= $form->field($model, 'title')->textInput(['class' => 'input-text','style'=>'width:500px'])->label(false) ?>
         </div>
     </div>
+
     <div class="row cl" id="vi_hide">
         <label class="form-label col-xs-4 col-sm-2">封面：</label>
         <div class="formControls col-xs-8 col-sm-9">
@@ -38,6 +39,7 @@ use yii\helpers\Url;
             </div>
         </div>
     </div>
+
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章分类：</label>
         <div class="formControls col-xs-8 col-sm-9">
@@ -62,7 +64,7 @@ use yii\helpers\Url;
         <div class="formControls col-xs-8 col-sm-9">
             <div>
                 <textarea id="editor"  name="content"   type="text/plain" style="width:1024px;height:500px;"><?=$model->content?></textarea>
-                </div>
+            </div>
         </div>
     </div>
 

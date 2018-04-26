@@ -35,6 +35,7 @@ class Article extends \yii\db\ActiveRecord
             [['cate_id', 'views'], 'integer'],
             [['content'], 'string'],
             [['update_time'], 'default','value'=>time()],
+            [['views'], 'default','value'=>0],
             [['title'], 'string', 'max' => 50],
             [['author'], 'string', 'max' => 20],
             [['author','title'], 'required'],
