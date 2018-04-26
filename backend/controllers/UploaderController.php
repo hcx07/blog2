@@ -19,7 +19,7 @@ class UploaderController extends Controller
     static $IMG_TYPE = [
         0 => 'temp',    //暂存
         1 => "user",    //
-        2 => "merchant"    //
+        2 => "article"    //
     ];
     public function actionWebUpload(){
         $img_type = $_REQUEST['img_type'];

@@ -33,7 +33,7 @@ class Article extends \yii\db\ActiveRecord
     {
         return [
             [['cate_id', 'views'], 'integer'],
-            [['content'], 'string'],
+            [['content','img'], 'string'],
             [['update_time'], 'default','value'=>time()],
             [['views'], 'default','value'=>0],
             [['title'], 'string', 'max' => 50],

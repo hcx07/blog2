@@ -73,6 +73,7 @@ class ArticleController extends BackendController
             if($model->load($post) && $model->validate()){
                 $model->created_time=time();
                 $model->content=$post['content'];
+                $model->img=$post['img'];
                 $model->save();
                 \Yii::$app->session->setFlash('success', '添加成功！');
                 return $this->redirect(['article/index']);
@@ -81,7 +82,7 @@ class ArticleController extends BackendController
                 return $this->redirect(['article/add']);
             }
         }
-        return $this->render('add', ['model' => $model, 'category' => $category]);
+        return $this->renderPartial('add', ['model' => $model, 'category' => $category]);
     }
 
     /**
@@ -189,9 +190,5 @@ class ArticleController extends BackendController
         $model->delete();
         \Yii::$app->session->setFlash('success', '删除成功！');
         return $this->redirect(['article/cate']);
-    }
-
-    public function actionTest(){
-        var_dump($_FILES);exit;
     }
 }
