@@ -190,6 +190,6 @@ class ArticleController extends BackendController
     }
 
     public function actionTest(){
-        return $this->renderPartial('test');
+        var_dump($_FILES);exit;
     }
 }
