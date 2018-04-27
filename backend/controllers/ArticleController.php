@@ -6,12 +6,13 @@
  * Time: 16:44
  */
 namespace backend\controllers;
+use backend\helpers\Helper;
 use backend\models\Article;
 use backend\models\Category;
 use yii\data\Pagination;
-
 class ArticleController extends BackendController
 {
+    public $enableCsrfValidation = false;
     /**
      * 文章列表
      * @return string
@@ -43,7 +44,7 @@ class ArticleController extends BackendController
             'totalCount' => $total,
             'defaultPageSize' => 10,
         ]);
-        $model = $query->offset($page->offset)->limit($page->limit)->orderBy(['article.created_time' => SORT_ASC])->all();
+        $model = $query->offset($page->offset)->limit($page->limit)->orderBy(['article.created_time' => SORT_DESC])->all();
         $cate = Category::find()->select('cate_id,cate_name')->asArray()->all();
         return $this->render('index', ['model' => $model, 'page' => $page,'cate'=>$cate,'return'=>$return]);
     }
@@ -116,6 +117,36 @@ class ArticleController extends BackendController
             }
         }
         return $this->renderPartial('add', ['model' => $model, 'category' => $category]);
+    }
+
+    /**
+     * 操作
+     */
+    public function actionOperation(){
+        $get=\Yii::$app->request->get();
+        $article_id=$get['article_id'];
+        $model=Article::findOne(['article_id'=>$article_id]);
+        if(isset($get['status'])){//显示隐藏
+            $model->status=$get['status'];
+            $res=$model->update();
+            if($res>=0){
+                Helper::response([],'操作成功');
+            }else{
+                $error=array_values($model->getFirstErrors());
+                Helper::response([],$error[0],300);
+            }
+        }
+        if(isset($get['is_top'])){//置顶
+            $model->is_top=$get['is_top'];
+            $res=$model->update();
+            if($res>=0){
+                Helper::response([],'操作成功');
+            }else{
+                $error=array_values($model->getFirstErrors());
+                Helper::response([],$error[0],300);
+            }
+        }
+        Helper::response([],'请刷新后再试',300);
     }
 
     /**

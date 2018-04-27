@@ -32,9 +32,10 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cate_id', 'views'], 'integer'],
+            [['cate_id', 'views','is_top'], 'integer'],
             [['content','img'], 'string'],
             [['update_time'], 'default','value'=>time()],
+            [['is_top'], 'default','value'=>0],
             [['views'], 'default','value'=>0],
             [['title'], 'string', 'max' => 50],
             [['author'], 'string', 'max' => 20],

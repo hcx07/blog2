@@ -2,18 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2018/4/26
- * Time: 9:56
+ * Date: 2018/4/27
+ * Time: 16:24
  */
-namespace app\helpers;
-
+namespace backend\helpers;
 
 use Yii;
 use yii\web\Response;
 
 class Helper
 {
-
     /**
      * @param array $data
      * @param string $msg
@@ -394,4 +392,5 @@ class Helper
         }
         return "";
     }
+
 }

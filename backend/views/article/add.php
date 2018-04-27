@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 ?>
 <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/site.css"/>
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
@@ -12,7 +13,6 @@ use yii\helpers\Url;
 <script type="text/javascript" charset="utf-8" src="uedit/ueditor.all.min.js"> </script>
 <script type="text/javascript" charset="utf-8" src="uedit/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript" charset="utf-8" src="uedit/edit.js"></script>
-
 <article class="page-container">
     <?=\common\widgets\Alert::widget()?>
     <?php
