@@ -65,7 +65,11 @@ use yii\helpers\Html;
                     </ol>
                     <div id="postpage" class="blog-post">
                         <article class="panel">
-
+                            <?php if($model->img):?>
+                                <div class="entry-thumbnail" aria-hidden="true">
+                                    <div class="item-thumb" style="background-image: url(<?=$model->img?>)"></div>
+                                </div>
+                            <?php endif;?>
                             <div id="post-content" class="wrapper-lg">
                                 <div class="entry-content l-h-2x">
                                     <?php
@@ -287,11 +291,11 @@ use yii\helpers\Html;
                             });
 
                             data = array_to_object(data);
-                            console.log(data);
+                            var add_url="<?= \yii\helpers\Url::toRoute(['index/guest'])?>";
                             if(data){
                                 ajax_post(add_url,data,function (re) {
                                     check_data(re,1);
-                                    if(re.errcode==200){
+                                    if(re.ecode==200){
                                         msg(re.msg,200);
                                         location.reload();
                                     }

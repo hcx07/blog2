@@ -15,10 +15,15 @@
                         <?php foreach ($model as $item):?>
                             <div class="panel">
                                 <div id="index-post-img">
-                                    <a href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>"></a></div>
+                                    <a href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>">
+                                        <?php if($item->img):?>
+                                        <div class="item-thumb" style="background-image: url(<?=$item->img?>)"></div>
+                                        <?php endif;?>
+                                    </a>
+                                </div>
                                 <div class="post-meta wrapper-lg">
-                                    <h2 class="m-t-none index-post-title"><a
-                                                href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>"><?=$item->title?></a></h2>
+                                    <h2 class="m-t-none index-post-title">
+                                        <a href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>"><?=$item->title?></a></h2>
                                     <p class="summary">
                                         <?php
                                         $str=strip_tags($item->content);
@@ -34,17 +39,9 @@
                                     <div class="text-muted">
                                         <i class="fa fa-user text-muted"></i>
                                         <span class="m-r-sm"><?=$item->author?>&nbsp;</span>
-                                        <i class="fa fa-clock-o text-muted"></i>&nbsp;<?=date('Y-m-d H:i:s',$item->created_time)?><a
-                                                href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>" class="m-l-sm"><i
-                                                    class="iconfont icon-comments text-muted"></i>&nbsp;
-                                            <?php
-                                            $res=\backend\models\Guestbook::find()->where(['article_id'=>$item->article_id])->count();
-                                            if($res>0){
-                                                echo $res.' 条评论';
-                                            }else{
-                                                echo '暂无评论';
-                                            }
-                                            ?></a></div>
+                                        <i class="fa fa-clock-o text-muted"></i>&nbsp;<?=date('Y-m-d H:i',$item->created_time)?>
+                                        <a href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>" class="m-l-sm"><i class="iconfont icon-comments text-muted"></i>&nbsp;<?=$item->guest_count?></a>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach;?>

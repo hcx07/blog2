@@ -109,15 +109,11 @@ use yii\helpers\Html;
                     <div class="dropdown wrapper">
 
                     <span class="thumb-lg w-auto-folded avatar m-t-sm">
-                    <?php echo Html::img('@web/ihewro/picture/1739964761.jpg',['class'=>'img-full'])?>
+                    <?php echo Html::img('@web/common/img/me.jpg',['class'=>'img-full'])?>
                     </span>
                     <span class="clear">
                     <span class="block m-t-sm">
-                    <strong class="font-bold text-lt">ihewro</strong>
-
-                    </span>
-                    <span class="text-muted text-xs block">A student</span>
-                    </span>
+                    <strong class="font-bold text-lt">木鸟</strong>
 
                     </div>
                     <div class="line dk hidden-folded"></div>
@@ -175,14 +171,15 @@ use yii\helpers\Html;
                                         <span>页面</span>
                                     </a>
                                 </li>
-                                <li><a href="https://www.ihewro.com/links.html"><span>链接库</span></a></li>
-                                <li><a href="https://www.ihewro.com/archives.html"><span>归档栏</span></a></li>
-                                <li><a href="https://www.ihewro.com/msg.html"><span>留言板</span></a></li>
-                                <li><a href="https://www.ihewro.com/about.html"><span>关于我</span></a></li>
-                                <li><a href="https://www.ihewro.com/cross.html"><span>时光机</span></a></li>
-                                <li><a href="https://www.ihewro.com/loves.html"><span>万花筒</span></a></li>
-                                <li><a href="https://www.ihewro.com/project.html"><span>实验室</span></a></li>
-                                <li><a href="https://www.ihewro.com/donate.html"><span>赞助我</span></a></li>
+                                <li><a href="#"><span>链接库</span></a></li>
+                                <li><a href="#"><span>归档栏</span></a></li>
+                                <li><a href="#"><span>留言板</span></a></li>
+                                <li><a href="#"><span>关于我</span></a></li>
+                                <li><a href="#"><span>时光机</span></a></li>
+                                <li><a href="#"><span>万花筒</span></a></li>
+                                <li><a href="#"><span>实验室</span></a></li>
+                                <li><a href="#"><span>赞助我</span></a></li>
+                                https://www.ihewro.com
                             </ul>
                         </li>
                         <li>

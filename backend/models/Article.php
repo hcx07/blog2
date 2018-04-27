@@ -18,6 +18,7 @@ use Yii;
 class Article extends \yii\db\ActiveRecord
 {
     public $cate_name;
+    public $guest_count;
     /**
      * @inheritdoc
      */

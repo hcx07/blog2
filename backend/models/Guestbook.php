@@ -30,7 +30,7 @@ class Guestbook extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['art_id', 'flag'], 'integer'],
+            [['article_id', 'flag'], 'integer'],
             [['content'], 'string'],
             [['intime'], 'safe'],
             [['username'], 'string', 'max' => 30],
@@ -45,7 +45,7 @@ class Guestbook extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'username' => 'Username',
-            'art_id' => 'Art ID',
+            'article_id' => 'Art ID',
             'content' => 'Content',
             'intime' => 'Intime',
             'flag' => 'Flag',
