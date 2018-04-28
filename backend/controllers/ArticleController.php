@@ -111,6 +111,8 @@ class ArticleController extends BackendController
             }
             if ($model->validate()) {
                 $model->content = $post['content'];
+                $model->update_time=time();
+                $model->img=$post['img'];
                 $model->save();
                 \Yii::$app->session->setFlash('success', '修改成功！');
                 return $this->redirect(['article/index']);

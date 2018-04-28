@@ -33,7 +33,14 @@ use yii\helpers\Url;
             <div id="uploader-demo">
                 <!--用来存放item-->
                 <div id="fileList" class="uploader-list">
-
+                    <?php if($model->img):?>
+                        <div id="<?= uniqid('img')?>" class="file-item thumbnail">
+                            <div onclick="delParent(this)" style="cursor: pointer;background: url('<?= Yii::getAlias("@web/images/h-ui/del.png")?>') no-repeat;background-size:contain;height: 20px;width: 20px;position: absolute;z-index: 10;right: 5px;"></div>
+                            <img style="width: 100px;height: 100px;" src="<?= $model->img?>">
+                            <input name="img" type="hidden" value="<?= $model->img?>">
+                            <div class="info"></div>
+                        </div>
+                    <?php endif;?>
                 </div>
                 <div id="filePicker">选择图片</div>
             </div>
