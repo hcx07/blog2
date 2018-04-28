@@ -79,8 +79,9 @@ class ArticleController extends BackendController
                 \Yii::$app->session->setFlash('success', '添加成功！');
                 return $this->redirect(['article/index']);
             }else{
-                \Yii::$app->session->setFlash('error', $model->getFirstErrors());
-                return $this->redirect(['article/add']);
+                $error=array_values($model->getFirstErrors());
+                \Yii::$app->session->setFlash('error', $error[0]);
+                return $this->redirect(['article/index']);
             }
         }
         return $this->renderPartial('add', ['model' => $model, 'category' => $category]);
@@ -115,6 +116,10 @@ class ArticleController extends BackendController
                 $model->img=$post['img'];
                 $model->save();
                 \Yii::$app->session->setFlash('success', '修改成功！');
+                return $this->redirect(['article/index']);
+            }else{
+                $error=array_values($model->getFirstErrors());
+                \Yii::$app->session->setFlash('error', $error[0]);
                 return $this->redirect(['article/index']);
             }
         }
