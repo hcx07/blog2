@@ -32,8 +32,11 @@ class Guestbook extends \yii\db\ActiveRecord
         return [
             [['article_id', 'flag'], 'integer'],
             [['content'], 'string'],
-            [['intime'], 'safe'],
+            ['created_time','default','value'=>time()],
             [['username'], 'string', 'max' => 30],
+            [['content','username','email'], 'required'],
+            [['email'],'match','pattern'=>'/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/','message'=>'邮箱格式错误，请重新输入'],
+            [['url'],'match','pattern'=>'/^(https?|ftp|file):\/\/[-A-Za-z0-9+&@#\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\/%=~_|]$/','message'=>'地址格式错误,请重新输入'],
         ];
     }
 
@@ -44,10 +47,12 @@ class Guestbook extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => '名称',
             'article_id' => 'Art ID',
-            'content' => 'Content',
-            'intime' => 'Intime',
+            'content' => '评论',
+            'url' => '地址',
+            'email' => '邮箱',
+            'created_time' => 'Intime',
             'flag' => 'Flag',
         ];
     }

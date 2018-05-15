@@ -141,31 +141,26 @@ use yii\helpers\Html;
                     <div id="comments">
                         <div id="respond-post-735" class="respond comment-respond">
                             <h4 id="reply-title" class="comment-reply-title m-t-lg m-b">发表评论</h4>
-
                             <form id="comment_form" method="post" onsubmit="return false" class="comment-form" role="form">
-                                <div class="comment-form-comment form-group">
-                                    <label for="comment">评论 <span class="required text-danger">*</span></label>
-                                    <textarea id="comment" class="textarea form-control OwO-textarea" name="text"
-                                              rows="5" placeholder="说点什么吧……"
-                                              onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                                <input type="hidden" name="article_id" value="<?=$model->article_id?>">
+                                <div class=" form-group">
+                                    <label for="comment">评论 <span class=" text-danger">*</span></label>
+                                    <textarea class="textarea form-control OwO-textarea" name="content" rows="5" placeholder="说点什么吧……" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
                                     <div class="OwO"></div>
                                 </div>
                                 <div id="author_info" class="row row-sm">
-                                    <div class="comment-form-author form-group col-sm-6 col-md-4">
-                                        <label for="author">名称 <span class="required text-danger">*</span></label>
-                                        <input id="author" class="form-control" name="author" type="text" value=""
-                                               maxlength="245" placeholder="姓名或昵称">
+                                    <div class=" form-group col-sm-6 col-md-4">
+                                        <label for="author">名称 <span class=" text-danger">*</span></label>
+                                        <input class="form-control" name="username" type="text" maxlength="245" placeholder="姓名或昵称" required>
                                     </div>
-                                    <div class="comment-form-email form-group col-sm-6 col-md-4">
-                                        <label for="email">邮箱 <span class="required text-danger">*</span>
+                                    <div class=" form-group col-sm-6 col-md-4">
+                                        <label >邮箱 <span class=" text-danger">*</span>
                                         </label>
-                                        <input type="text" name="mail" id="mail" class="form-control"
-                                               placeholder="邮箱 (必填,将保密)" value=""/>
+                                        <input type="text" name="email" class="form-control" placeholder="邮箱 (必填,将保密)" required/>
                                     </div>
-                                    <div class="comment-form-url form-group col-sm-12 col-md-4">
+                                    <div class=" form-group col-sm-12 col-md-4">
                                         <label for="url">地址</label>
-                                        <input id="url" class="form-control" name="url" type="url" value=""
-                                               maxlength="200" placeholder="网站或博客"></div>
+                                        <input class="form-control" name="url" type="url" maxlength="200" placeholder="网站或博客"></div>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" name="submit" id="submit"
@@ -177,112 +172,185 @@ use yii\helpers\Html;
                                 </div>
                             </form>
                         </div>
+                        <h4 class="comments-title m-t-lg m-b">5 条评论</h4>
+                        <ol class="comment-list">
+                            <li id="comment-5053" class="comment-body comment-parent comment-odd">
+                                <div id="div-comment-5053" class="comment-body">
+                                    <a class="pull-left thumb-sm">
+                                        <img nogallery src="images/924160a5e79f4252b8788184e857b038.gif"
+                                             class="avatar-40 photo img-circle"
+                                             style="height:40px!important; width: 40px!important;"> </a>
+                                    <div class="m-b m-l-xxl">
+                                        <div class="comment-meta">
+<span class="comment-author vcard">
+<b class="fn"><a href="https://9sb.org" target="_blank" rel="external nofollow">王忘杰</a></b> </span>
+                                            <div class="comment-metadata">
+                                                <time class="format_time text-muted text-xs block m-t-xs"
+                                                      pubdate="pubdate" datetime="2018-05-06T17:58:25+08:00">1 星期前
+                                                </time>
+                                            </div>
+                                        </div>
+                                        <div class="comment-content m-t-sm">
+                                            <span class="comment-author-at"><b></b></span><span
+                                                    class="comment-content-true">
+<p>害怕伤害不敢前进，不敢前进更加孤独。</p> </span>
+                                        </div>
+                                        <div class="comment-reply m-t-sm">
+                                            <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5053#respond-post-780"
+                                               rel="nofollow"
+                                               onclick="return TypechoComment.reply('comment-5053', 5053);">回复</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="comment-5051" class="comment-body comment-parent comment-even">
+                                <div id="div-comment-5051" class="comment-body">
+                                    <a class="pull-left thumb-sm">
+                                        <img nogallery src="images/e6dd8c39eae24f72865196a3f9aafa3c.gif"
+                                             class="avatar-40 photo img-circle"
+                                             style="height:40px!important; width: 40px!important;"> </a>
+                                    <div class="m-b m-l-xxl">
+                                        <div class="comment-meta">
+<span class="comment-author vcard">
+<b class="fn"><a href="http://www.1900.live" target="_blank" rel="external nofollow">1900</a></b> </span>
+                                            <div class="comment-metadata">
+                                                <time class="format_time text-muted text-xs block m-t-xs"
+                                                      pubdate="pubdate" datetime="2018-05-06T13:29:47+08:00">1 星期前
+                                                </time>
+                                            </div>
+                                        </div>
+                                        <div class="comment-content m-t-sm">
+                                            <span class="comment-author-at"><b></b></span><span
+                                                    class="comment-content-true">
+<p>不恋爱只有一种感觉：孤独。</p>
+<p>恋爱后你会感到：幸福、开心、失落、嫉妒...，你以往想都没想过的感觉会淋在<br>
+你的身心。</p> </span>
+                                        </div>
+                                        <div class="comment-reply m-t-sm">
+                                            <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5051#respond-post-780"
+                                               rel="nofollow"
+                                               onclick="return TypechoComment.reply('comment-5051', 5051);">回复</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-children list-unstyled m-l-xxl">
+                                    <ol class="comment-list">
+                                        <li id="comment-5058"
+                                            class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+                                            <div id="div-comment-5058" class="comment-body">
+                                                <a class="pull-left thumb-sm">
+                                                    <img nogallery src="images/9656e8b80df54c59a321de3bb9839b7f.gif"
+                                                         class="avatar-40 photo img-circle"
+                                                         style="height:40px!important; width: 40px!important;"> </a>
+                                                <div class="m-b m-l-xxl">
+                                                    <div class="comment-meta">
+<span class="comment-author vcard">
+<b class="fn"><a href="http://www.ihewro.com/" target="_blank" rel="external nofollow">友人C</a></b><label
+            class="label bg-dark m-l-xs">博主</label> </span>
+                                                        <div class="comment-metadata">
+                                                            <time class="format_time text-muted text-xs block m-t-xs"
+                                                                  pubdate="pubdate"
+                                                                  datetime="2018-05-09T19:26:55+08:00">5 天前
+                                                            </time>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-content m-t-sm">
+                                                        <span class="comment-author-at"><b><a href="#comment-5051">@1900</a></b></span><span
+                                                                class="comment-content-true">
+<p>但是就是想尝试恋爱的幸福呢 <img src="images/crying.png" class="emotion-aru"> </p> </span>
+                                                    </div>
+                                                    <div class="comment-reply m-t-sm">
+                                                        <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5058#respond-post-780"
+                                                           rel="nofollow"
+                                                           onclick="return TypechoComment.reply('comment-5058', 5058);">回复</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comment-children list-unstyled m-l-xxl">
+                                                <ol class="comment-list">
+                                                    <li id="comment-5062"
+                                                        class="comment-body comment-child2 comment-level-even comment-even">
+                                                        <div id="div-comment-5062" class="comment-body">
+                                                            <a class="pull-left thumb-sm">
+                                                                <img nogallery
+                                                                     src="images/e6dd8c39eae24f72865196a3f9aafa3c.gif"
+                                                                     class="avatar-40 photo img-circle"
+                                                                     style="height:40px!important; width: 40px!important;">
+                                                            </a>
+                                                            <div class="m-b m-l-xxl">
+                                                                <div class="comment-meta">
+<span class="comment-author vcard">
+<b class="fn"><a href="http://www.1900.live" target="_blank" rel="external nofollow">1900</a></b> </span>
+                                                                    <div class="comment-metadata">
+                                                                        <time class="format_time text-muted text-xs block m-t-xs"
+                                                                              pubdate="pubdate"
+                                                                              datetime="2018-05-11T14:43:32+08:00">4
+                                                                            天前
+                                                                        </time>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-content m-t-sm">
+                                                                        <span class="comment-author-at"><b><a
+                                                                                        href="#comment-5058">@友人C</a></b></span><span
+                                                                            class="comment-content-true">
+<p>对呀，还是有这么多人前仆后继~，也许这就是人生吧。</p>
+<p>回想起夕阳下的奔跑，那是我逝去的青春。<br>
+（话说没有邮件回复很不方便那。）</p> </span>
+                                                                </div>
+                                                                <div class="comment-reply m-t-sm">
+                                                                    <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5062#respond-post-780"
+                                                                       rel="nofollow"
+                                                                       onclick="return TypechoComment.reply('comment-5062', 5062);">回复</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li id="comment-5061"
+                                                        class="comment-body comment-child2 comment-level-even comment-odd">
+                                                        <div id="div-comment-5061" class="comment-body">
+                                                            <a class="pull-left thumb-sm">
+                                                                <img nogallery
+                                                                     src="images/8f4ff4290e964805a6f097b60f920123.gif"
+                                                                     class="avatar-40 photo img-circle"
+                                                                     style="height:40px!important; width: 40px!important;">
+                                                            </a>
+                                                            <div class="m-b m-l-xxl">
+                                                                <div class="comment-meta">
+<span class="comment-author vcard">
+<b class="fn"><a href="http://longxianwen.net" target="_blank" rel="external nofollow">龙显文</a></b> </span>
+                                                                    <div class="comment-metadata">
+                                                                        <time class="format_time text-muted text-xs block m-t-xs"
+                                                                              pubdate="pubdate"
+                                                                              datetime="2018-05-11T08:38:18+08:00">4
+                                                                            天前
+                                                                        </time>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-content m-t-sm">
+                                                                        <span class="comment-author-at"><b><a
+                                                                                        href="#comment-5058">@友人C</a></b></span><span
+                                                                            class="comment-content-true">
+<p>年轻人的烦恼总是那么相似<img src="images/knife.png" class="emotion-aru"> </p> </span>
+                                                                </div>
+                                                                <div class="comment-reply m-t-sm">
+                                                                    <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5061#respond-post-780"
+                                                                       rel="nofollow"
+                                                                       onclick="return TypechoComment.reply('comment-5061', 5061);">回复</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                        </ol>
+                        <nav class="text-center m-t-lg m-b-lg" role="navigation"></nav>
+
                     </div>
                     <script type="text/javascript">
-                        (function () {
-                            window.TypechoComment = {
-                                dom: function (id) {
-                                    return document.getElementById(id);
-                                }, create: function (tag, attr) {
-                                    var el = document.createElement(tag);
-                                    for (var key in attr) {
-                                        el.setAttribute(key, attr[key]);
-                                    }
-                                    return el;
-                                }, reply: function (cid, coid) {
-                                    var comment = this.dom(cid), parent = comment.parentNode,
-                                        response = this.dom('respond-post-735'), input = this.dom('comment-parent'),
-                                        form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
-                                        textarea = response.getElementsByTagName('textarea')[0];
-                                    if (null == input) {
-                                        input = this.create('input', {
-                                            'type': 'hidden', 'name': 'parent', 'id': 'comment-parent'
-                                        });
-                                        form.appendChild(input);
-                                    }
-                                    input.setAttribute('value', coid);
-                                    if (null == this.dom('comment-form-place-holder')) {
-                                        var holder = this.create('div', {
-                                            'id': 'comment-form-place-holder'
-                                        });
-                                        response.parentNode.insertBefore(holder, response);
-                                    }
-                                    comment.appendChild(response);
-                                    this.dom('cancel-comment-reply-link').style.display = '';
-                                    if (null != textarea && 'text' == textarea.name) {
-                                        textarea.focus();
-                                    }
-                                    return false;
-                                }, cancelReply: function () {
-                                    var response = this.dom('respond-post-735'),
-                                        holder = this.dom('comment-form-place-holder'),
-                                        input = this.dom('comment-parent');
-                                    if (null != input) {
-                                        input.parentNode.removeChild(input);
-                                    }
-                                    if (null == holder) {
-                                        return true;
-                                    }
-                                    this.dom('cancel-comment-reply-link').style.display = 'none';
-                                    holder.parentNode.insertBefore(response, holder);
-                                    return false;
-                                }
-                            };
-                        })();
-
-                        var registCommentEvent = function () {
-                            var event = document.addEventListener ? {
-                                add: 'addEventListener', focus: 'focus', load: 'DOMContentLoaded'
-                            } : {
-                                add: 'attachEvent', focus: 'onfocus', load: 'onload'
-                            };
-                            var r = document.getElementById('respond-post-735');
-                            if (null != r) {
-                                var forms = r.getElementsByTagName('form');
-                                if (forms.length > 0) {
-                                    var f = forms[0], textarea = f.getElementsByTagName('textarea')[0], added = false;
-                                    if (null != textarea && 'text' == textarea.name) {
-                                        textarea[event.add](event.focus, function () {
-                                            if (!added) {
-                                                var input = document.createElement('input');
-                                                input.type = 'hidden';
-                                                input.name = '_';
-                                                input.value = (function () {
-                                                    var _jWRe = 'd' + 'e'
-                                                        + 'd7'
-                                                        + '82'
-                                                        + '83f'
-                                                        +
-                                                        '22' +
-                                                        '70' +
-                                                        '8cb' + '440'
-                                                        + 'a'
-                                                        + '79d'
-                                                        + '' +
-                                                        '59' +
-                                                        'ed' +
-                                                        'V8' +
-                                                        '315' +
-                                                        'ce', _Q5AnJ = [[27, 29]];
-                                                    for (var i = 0; i < _Q5AnJ.length; i++) {
-                                                        _jWRe = _jWRe.substring(0, _Q5AnJ[i][0]) + _jWRe.substring(_Q5AnJ[i][1]);
-                                                    }
-                                                    return _jWRe;
-                                                })();
-                                                f.appendChild(input);
-                                                input = document.createElement('input');
-                                                input.type = 'hidden';
-                                                input.name = 'checkReferer';
-                                                input.value = 'false';
-                                                f.appendChild(input);
-                                                added = true;
-                                            }
-                                        });
-                                    }
-                                }
-                            }
-                        };
-
                         $('#submit').click(function () {
                             var from_data = $('#comment_form').serializeArray();
                             var data = [];
@@ -294,14 +362,17 @@ use yii\helpers\Html;
                             var add_url="<?= \yii\helpers\Url::toRoute(['index/guest'])?>";
                             if(data){
                                 ajax_post(add_url,data,function (re) {
+                                    console.log(re);
                                     check_data(re,1);
                                     if(re.ecode==200){
-                                        msg(re.msg,200);
-                                        location.reload();
+                                        layer.msg(re.msg, {icon: 1,time:1000});
+                                        parent.window.location.reload();
                                     }
+                                    layer.msg(re.msg, {icon: 5,time:2000});
+                                    parent.window.location.reload();
                                 });
                             }else{
-                                return msg('请填写资料',201);
+                                layer.msg('请填写资料', {icon: 5,time:2000});
                             }
                         });
                     </script>

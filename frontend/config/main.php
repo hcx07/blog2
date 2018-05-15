@@ -12,6 +12,7 @@ return [
     'defaultRoute'=>'index', //默认访问的控制器
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'language'=>'zh-CN',//语言
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',

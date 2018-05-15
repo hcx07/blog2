@@ -49,7 +49,10 @@ class IndexController extends Controller{
             ->select('article.*,category.cate_id,category.cate_name')
             ->where(['article_id'=>$article_id])
             ->one();
-        return $this->render('article',['model'=>$model]);
+        $guest=Guestbook::find()
+            ->where(['article_id'=>$article_id])
+            ->all();
+        return $this->render('article',['model'=>$model,'guest'=>$guest]);
     }
     /**
      * 文章评论
@@ -61,7 +64,8 @@ class IndexController extends Controller{
             $model->save();
             Helper::response([],'评论成功');
         }else{
-            Helper::response([],'评论失败，请重试',300);
+            $error=array_values($model->getFirstErrors());
+            Helper::response([],$error[0],300);
         }
     }
 }
