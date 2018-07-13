@@ -172,37 +172,37 @@ use yii\helpers\Html;
                                 </div>
                             </form>
                         </div>
-                        <h4 class="comments-title m-t-lg m-b">5 条评论</h4>
+                        <h4 class="comments-title m-t-lg m-b"><?=$count?> 条评论</h4>
                         <ol class="comment-list">
-                            <li id="comment-5053" class="comment-body comment-parent comment-odd">
-                                <div id="div-comment-5053" class="comment-body">
-                                    <a class="pull-left thumb-sm">
-                                        <img nogallery src="images/924160a5e79f4252b8788184e857b038.gif"
-                                             class="avatar-40 photo img-circle"
-                                             style="height:40px!important; width: 40px!important;"> </a>
-                                    <div class="m-b m-l-xxl">
-                                        <div class="comment-meta">
-<span class="comment-author vcard">
-<b class="fn"><a href="https://9sb.org" target="_blank" rel="external nofollow">王忘杰</a></b> </span>
-                                            <div class="comment-metadata">
-                                                <time class="format_time text-muted text-xs block m-t-xs"
-                                                      pubdate="pubdate" datetime="2018-05-06T17:58:25+08:00">1 星期前
-                                                </time>
+                            <?php foreach ($guest as $item):?>
+                                <li id="comment-5053" class="comment-body comment-parent comment-odd">
+                                    <div class="comment-body">
+                                        <a class="pull-left thumb-sm">
+                                            <img nogallery src="/common/img/me.jpg" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;"> </a>
+                                        <div class="m-b m-l-xxl">
+                                            <div class="comment-meta">
+                                            <span class="comment-author vcard">
+                                            <b class="fn"><a href="https://9sb.org" target="_blank" rel="external nofollow"><?=$item['username']?></a></b>
+                                            </span>
+                                                <div class="comment-metadata">
+                                                    <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2018-05-06T17:58:25+08:00"><?=$item['created_time']?></time>
+                                                </div>
+                                            </div>
+                                            <div class="comment-content m-t-sm">
+                                            <span class="comment-author-at">
+                                                <b></b>
+                                            </span>
+                                                <span class="comment-content-true">
+                                                <p><?=$item['content']?></p>
+                                            </span>
+                                            </div>
+                                            <div class="comment-reply m-t-sm">
+                                                <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5053#respond-post-780" rel="nofollow" onclick="return TypechoComment.reply('comment-5053', 5053);">回复</a>
                                             </div>
                                         </div>
-                                        <div class="comment-content m-t-sm">
-                                            <span class="comment-author-at"><b></b></span><span
-                                                    class="comment-content-true">
-<p>害怕伤害不敢前进，不敢前进更加孤独。</p> </span>
-                                        </div>
-                                        <div class="comment-reply m-t-sm">
-                                            <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5053#respond-post-780"
-                                               rel="nofollow"
-                                               onclick="return TypechoComment.reply('comment-5053', 5053);">回复</a>
-                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            <?php endforeach;?>
                             <li id="comment-5051" class="comment-body comment-parent comment-even">
                                 <div id="div-comment-5051" class="comment-body">
                                     <a class="pull-left thumb-sm">
@@ -239,30 +239,24 @@ use yii\helpers\Html;
                                             class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
                                             <div id="div-comment-5058" class="comment-body">
                                                 <a class="pull-left thumb-sm">
-                                                    <img nogallery src="images/9656e8b80df54c59a321de3bb9839b7f.gif"
-                                                         class="avatar-40 photo img-circle"
-                                                         style="height:40px!important; width: 40px!important;"> </a>
+                                                    <img nogallery src="/common/img/me.jpg" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;"> </a>
                                                 <div class="m-b m-l-xxl">
                                                     <div class="comment-meta">
-<span class="comment-author vcard">
-<b class="fn"><a href="http://www.ihewro.com/" target="_blank" rel="external nofollow">友人C</a></b><label
-            class="label bg-dark m-l-xs">博主</label> </span>
+                                                        <span class="comment-author vcard">
+                                                        <b class="fn">
+                                                            <a href="http://www.ihewro.com/" target="_blank" rel="external nofollow">友人C</a>
+                                                        </b><label class="label bg-dark m-l-xs">博主</label> </span>
                                                         <div class="comment-metadata">
-                                                            <time class="format_time text-muted text-xs block m-t-xs"
-                                                                  pubdate="pubdate"
-                                                                  datetime="2018-05-09T19:26:55+08:00">5 天前
+                                                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2018-05-09T19:26:55+08:00">5 天前
                                                             </time>
                                                         </div>
                                                     </div>
                                                     <div class="comment-content m-t-sm">
-                                                        <span class="comment-author-at"><b><a href="#comment-5051">@1900</a></b></span><span
-                                                                class="comment-content-true">
-<p>但是就是想尝试恋爱的幸福呢 <img src="images/crying.png" class="emotion-aru"> </p> </span>
+                                                        <span class="comment-author-at"><b><a href="#comment-5051">@1900</a></b></span>
+                                                        <span class="comment-content-true"><p>但是就是想尝试恋爱的幸福呢 <img src="/common/img/me.jpg" class="emotion-aru"> </p> </span>
                                                     </div>
                                                     <div class="comment-reply m-t-sm">
-                                                        <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5058#respond-post-780"
-                                                           rel="nofollow"
-                                                           onclick="return TypechoComment.reply('comment-5058', 5058);">回复</a>
+                                                        <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5058#respond-post-780" rel="nofollow" onclick="return TypechoComment.reply('comment-5058', 5058);">回复</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -357,19 +351,54 @@ use yii\helpers\Html;
                             $.each(from_data,function(i){
                                 data[from_data[i].name] = from_data[i].value;
                             });
-
+                            console.log(data);
                             data = array_to_object(data);
                             var add_url="<?= \yii\helpers\Url::toRoute(['index/guest'])?>";
+                            var list=$('.comment-list');
                             if(data){
                                 ajax_post(add_url,data,function (re) {
                                     console.log(re);
                                     check_data(re,1);
-                                    if(re.ecode==200){
+
+                                    if(re.code==200){
+                                        var html='<li id="comment-5053" class="comment-body comment-parent comment-odd">\n' +
+                                            '<div class="comment-body">\n' +
+                                            '<a class="pull-left thumb-sm">\n' +
+                                            '<img nogallery src="/common/img/me.jpg" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;"> </a>\n' +
+                                            '<div class="m-b m-l-xxl">\n' +
+                                            '<div class="comment-meta">\n' +
+                                            '<span class="comment-author vcard">\n' +
+                                            '<b class="fn"><a href="https://9sb.org" target="_blank" rel="external nofollow">'+data['username']+'</a></b>\n' +
+                                            '</span>\n' +
+                                            '<div class="comment-metadata">\n' +
+                                            '<time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2018-05-06T17:58:25+08:00">刚刚</time>\n' +
+                                            '</div>\n' +
+                                            '</div>\n' +
+                                            '<div class="comment-content m-t-sm">\n' +
+                                            '<span class="comment-author-at">\n' +
+                                            '<b></b>\n' +
+                                            '</span>\n' +
+                                            '<span class="comment-content-true">\n' +
+                                            '<p>' + data['content']+
+                                            '</p>\n' +
+                                            '</span>\n' +
+                                            '</div>\n' +
+                                            '<div class="comment-reply m-t-sm">\n' +
+                                            '<a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5053#respond-post-780" rel="nofollow" onclick="return TypechoComment.reply(\'comment-5053\', 5053);">回复</a>\n' +
+                                            '</div>\n' +
+                                            '</div>\n' +
+                                            '</div>\n' +
+                                            '</li>';
+
                                         layer.msg(re.msg, {icon: 1,time:1000});
-                                        parent.window.location.reload();
+                                        console.log(html);
+                                        list.prepend(html);
+
+
+//                                        parent.window.location.reload();
+                                    }else{
+                                        layer.msg(re.msg, {icon: 5,time:2000});
                                     }
-                                    layer.msg(re.msg, {icon: 5,time:2000});
-                                    parent.window.location.reload();
                                 });
                             }else{
                                 layer.msg('请填写资料', {icon: 5,time:2000});

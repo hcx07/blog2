@@ -51,16 +51,27 @@ class IndexController extends Controller{
             ->one();
         $guest=Guestbook::find()
             ->where(['article_id'=>$article_id])
+            ->orderBy('created_time desc')
             ->all();
-        return $this->render('article',['model'=>$model,'guest'=>$guest]);
+        $count=Guestbook::find()
+            ->where(['article_id'=>$article_id])
+            ->count();
+        foreach ($guest as &$item){
+            $item['created_time']=Helper::getSimpleTime($item['created_time']);
+        }
+        return $this->render('article',['model'=>$model,'guest'=>$guest,'count'=>$count]);
     }
     /**
      * 文章评论
      */
     public function actionGuest(){
         $post=\Yii::$app->request->post();
+        foreach ($post as &$item){
+            $item=preg_replace("/<script[^>]*?>.*?<\/script>/si", "", strip_tags(html_entity_decode($item)));
+        }
         $model=new Guestbook();
         if($model->load($post,'') && $model->validate()){
+
             $model->save();
             Helper::response([],'评论成功');
         }else{
