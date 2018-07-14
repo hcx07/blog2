@@ -50,7 +50,7 @@ class IndexController extends Controller{
             ->where(['article_id'=>$article_id])
             ->one();
         $guest=Guestbook::find()
-            ->where(['article_id'=>$article_id])
+            ->where(['article_id'=>$article_id,'parent_id'=>0,'flag'=>0])
             ->orderBy('created_time desc')
             ->all();
         $count=Guestbook::find()
@@ -58,6 +58,12 @@ class IndexController extends Controller{
             ->count();
         foreach ($guest as &$item){
             $item['created_time']=Helper::getSimpleTime($item['created_time']);
+            $son=Guestbook::find()->where(['parent_id'=>$item['guest_id'],'flag'=>0])->orderBy('created_time asc')->all();
+            foreach ($son as &$val){
+                $val['created_time']=Helper::getSimpleTime($val['created_time']);
+                $val['reply']=Guestbook::find()->where(['guest_id'=>$val['two_id'],'flag'=>0])->select('username')->one()->username;
+            }
+            $item['son']=$son;
         }
         return $this->render('article',['model'=>$model,'guest'=>$guest,'count'=>$count]);
     }
@@ -65,18 +71,30 @@ class IndexController extends Controller{
      * 文章评论
      */
     public function actionGuest(){
-        $post=\Yii::$app->request->post();
-        foreach ($post as &$item){
-            $item=preg_replace("/<script[^>]*?>.*?<\/script>/si", "", strip_tags(html_entity_decode($item)));
+        if(\Yii::$app->request->isPost){
+            $post=\Yii::$app->request->post();
+            foreach ($post as &$item){
+                $item=preg_replace("/<script[^>]*?>.*?<\/script>/si", "", strip_tags(html_entity_decode($item)));
+            }
+            $model=new Guestbook();
+            if($model->load($post,'') && $model->validate()){
+                $model->save();
+                $data=Guestbook::find()
+                    ->where(['guest_id'=>\Yii::$app->db->lastInsertID])
+                    ->asArray()
+                    ->one();
+                $reply=Guestbook::find()->where(['guest_id'=>$data['two_id'],'flag'=>0])->select('username')->one();
+                if($reply){
+                    $data['reply']=$reply->username;
+                }else{
+                    $data['reply']='';
+                }
+                Helper::response($data,'评论成功');
+            }else{
+                $error=array_values($model->getFirstErrors());
+                Helper::response([],$error[0],300);
+            }
         }
-        $model=new Guestbook();
-        if($model->load($post,'') && $model->validate()){
 
-            $model->save();
-            Helper::response([],'评论成功');
-        }else{
-            $error=array_values($model->getFirstErrors());
-            Helper::response([],$error[0],300);
-        }
     }
 }

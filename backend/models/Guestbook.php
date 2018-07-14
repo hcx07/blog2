@@ -16,6 +16,8 @@ use Yii;
  */
 class Guestbook extends \yii\db\ActiveRecord
 {
+    public $son;
+    public $reply;
     /**
      * @inheritdoc
      */
@@ -30,7 +32,7 @@ class Guestbook extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['article_id', 'flag'], 'integer'],
+            [['article_id', 'flag','parent_id','two_id'], 'integer'],
             [['content'], 'string'],
             ['created_time','default','value'=>time()],
             [['username'], 'string', 'max' => 30],

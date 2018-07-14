@@ -139,13 +139,13 @@ use yii\helpers\Html;
                     </div>
 
                     <div id="comments">
-                        <div id="respond-post-735" class="respond comment-respond">
+                        <div class="respond comment-respond">
                             <h4 id="reply-title" class="comment-reply-title m-t-lg m-b">发表评论</h4>
-                            <form id="comment_form" method="post" onsubmit="return false" class="comment-form" role="form">
+                            <form method="post" onsubmit="return false" class="comment-form" role="form">
                                 <input type="hidden" name="article_id" value="<?=$model->article_id?>">
                                 <div class=" form-group">
                                     <label for="comment">评论 <span class=" text-danger">*</span></label>
-                                    <textarea class="textarea form-control OwO-textarea" name="content" rows="5" placeholder="说点什么吧……" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                                    <textarea class="textarea form-control OwO-textarea" name="content" rows="5" placeholder="说点什么吧……" ></textarea>
                                     <div class="OwO"></div>
                                 </div>
                                 <div id="author_info" class="row row-sm">
@@ -163,8 +163,7 @@ use yii\helpers\Html;
                                         <input class="form-control" name="url" type="url" maxlength="200" placeholder="网站或博客"></div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="submit" id="submit"
-                                            class="submit btn btn-success padder-lg">
+                                    <button type="submit" name="submit" class="submit btn btn-success padder-lg" data-pid="0">
                                         <span class="text">发表评论</span>
                                         <span class="text-active">提交中...</span>
                                     </button>
@@ -175,7 +174,7 @@ use yii\helpers\Html;
                         <h4 class="comments-title m-t-lg m-b"><?=$count?> 条评论</h4>
                         <ol class="comment-list">
                             <?php foreach ($guest as $item):?>
-                                <li id="comment-5053" class="comment-body comment-parent comment-odd">
+                                <li class="comment-body comment-parent comment-odd comment-<?=$item['guest_id']?>">
                                     <div class="comment-body">
                                         <a class="pull-left thumb-sm">
                                             <img nogallery src="/common/img/me.jpg" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;"> </a>
@@ -197,171 +196,88 @@ use yii\helpers\Html;
                                             </span>
                                             </div>
                                             <div class="comment-reply m-t-sm">
-                                                <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5053#respond-post-780" rel="nofollow" onclick="return TypechoComment.reply('comment-5053', 5053);">回复</a>
+                                                <a href="javascript:void(0);" class="reply-msg" data-id="<?=$item['guest_id']?>" data-article="<?=$model->article_id?>" onclick="reply(this,<?=$item['guest_id']?>,<?=$model->article_id?>,<?=$item['guest_id']?>)">回复</a>
+                                                <div class="reply">
+
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="comment-children list-unstyled m-l-xxl">
+                                        <ol class="comment-list">
+                                            <li class="comment-body comment-son-<?=$item['guest_id']?> comment-odd">
+                                                <?php foreach ($item['son'] as $son):?>
+                                                    <div class="comment-body">
+                                                        <a class="pull-left thumb-sm">
+                                                            <img nogallery src="/common/img/me.jpg" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;"> </a>
+                                                        <div class="m-b m-l-xxl">
+                                                            <div class="comment-meta">
+                                            <span class="comment-author vcard">
+                                            <b class="fn"><a href="https://9sb.org" target="_blank" rel="external nofollow"><?=$son['username']?></a></b>
+                                            </span>
+                                                                <div class="comment-metadata">
+                                                                    <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2018-05-06T17:58:25+08:00"><?=$son['created_time']?></time>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-content m-t-sm">
+                                            <span class="comment-author-at">
+                                                <b></b>
+                                            </span>
+                                                                <span class="comment-content-true">
+                                                                    <p><b>@<?=$son['reply']?></b> <?=$son['content']?></p>
+                                            </span>
+                                                            </div>
+                                                            <div class="comment-reply m-t-sm">
+                                                                <a href="javascript:void(0);" class="reply-msg" data-id="<?=$item['guest_id']?>" data-article="<?=$model->article_id?>" onclick="reply(this,<?=$item['guest_id']?>,<?=$model->article_id?>,<?=$son['guest_id']?>)">回复</a>
+                                                                <div class="reply">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach;?>
+                                            </li>
+                                        </ol>
                                     </div>
                                 </li>
                             <?php endforeach;?>
-                            <li id="comment-5051" class="comment-body comment-parent comment-even">
-                                <div id="div-comment-5051" class="comment-body">
-                                    <a class="pull-left thumb-sm">
-                                        <img nogallery src="images/e6dd8c39eae24f72865196a3f9aafa3c.gif"
-                                             class="avatar-40 photo img-circle"
-                                             style="height:40px!important; width: 40px!important;"> </a>
-                                    <div class="m-b m-l-xxl">
-                                        <div class="comment-meta">
-<span class="comment-author vcard">
-<b class="fn"><a href="http://www.1900.live" target="_blank" rel="external nofollow">1900</a></b> </span>
-                                            <div class="comment-metadata">
-                                                <time class="format_time text-muted text-xs block m-t-xs"
-                                                      pubdate="pubdate" datetime="2018-05-06T13:29:47+08:00">1 星期前
-                                                </time>
-                                            </div>
-                                        </div>
-                                        <div class="comment-content m-t-sm">
-                                            <span class="comment-author-at"><b></b></span><span
-                                                    class="comment-content-true">
-<p>不恋爱只有一种感觉：孤独。</p>
-<p>恋爱后你会感到：幸福、开心、失落、嫉妒...，你以往想都没想过的感觉会淋在<br>
-你的身心。</p> </span>
-                                        </div>
-                                        <div class="comment-reply m-t-sm">
-                                            <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5051#respond-post-780"
-                                               rel="nofollow"
-                                               onclick="return TypechoComment.reply('comment-5051', 5051);">回复</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comment-children list-unstyled m-l-xxl">
-                                    <ol class="comment-list">
-                                        <li id="comment-5058"
-                                            class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
-                                            <div id="div-comment-5058" class="comment-body">
-                                                <a class="pull-left thumb-sm">
-                                                    <img nogallery src="/common/img/me.jpg" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;"> </a>
-                                                <div class="m-b m-l-xxl">
-                                                    <div class="comment-meta">
-                                                        <span class="comment-author vcard">
-                                                        <b class="fn">
-                                                            <a href="http://www.ihewro.com/" target="_blank" rel="external nofollow">友人C</a>
-                                                        </b><label class="label bg-dark m-l-xs">博主</label> </span>
-                                                        <div class="comment-metadata">
-                                                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2018-05-09T19:26:55+08:00">5 天前
-                                                            </time>
-                                                        </div>
-                                                    </div>
-                                                    <div class="comment-content m-t-sm">
-                                                        <span class="comment-author-at"><b><a href="#comment-5051">@1900</a></b></span>
-                                                        <span class="comment-content-true"><p>但是就是想尝试恋爱的幸福呢 <img src="/common/img/me.jpg" class="emotion-aru"> </p> </span>
-                                                    </div>
-                                                    <div class="comment-reply m-t-sm">
-                                                        <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5058#respond-post-780" rel="nofollow" onclick="return TypechoComment.reply('comment-5058', 5058);">回复</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="comment-children list-unstyled m-l-xxl">
-                                                <ol class="comment-list">
-                                                    <li id="comment-5062"
-                                                        class="comment-body comment-child2 comment-level-even comment-even">
-                                                        <div id="div-comment-5062" class="comment-body">
-                                                            <a class="pull-left thumb-sm">
-                                                                <img nogallery
-                                                                     src="images/e6dd8c39eae24f72865196a3f9aafa3c.gif"
-                                                                     class="avatar-40 photo img-circle"
-                                                                     style="height:40px!important; width: 40px!important;">
-                                                            </a>
-                                                            <div class="m-b m-l-xxl">
-                                                                <div class="comment-meta">
-<span class="comment-author vcard">
-<b class="fn"><a href="http://www.1900.live" target="_blank" rel="external nofollow">1900</a></b> </span>
-                                                                    <div class="comment-metadata">
-                                                                        <time class="format_time text-muted text-xs block m-t-xs"
-                                                                              pubdate="pubdate"
-                                                                              datetime="2018-05-11T14:43:32+08:00">4
-                                                                            天前
-                                                                        </time>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="comment-content m-t-sm">
-                                                                        <span class="comment-author-at"><b><a
-                                                                                        href="#comment-5058">@友人C</a></b></span><span
-                                                                            class="comment-content-true">
-<p>对呀，还是有这么多人前仆后继~，也许这就是人生吧。</p>
-<p>回想起夕阳下的奔跑，那是我逝去的青春。<br>
-（话说没有邮件回复很不方便那。）</p> </span>
-                                                                </div>
-                                                                <div class="comment-reply m-t-sm">
-                                                                    <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5062#respond-post-780"
-                                                                       rel="nofollow"
-                                                                       onclick="return TypechoComment.reply('comment-5062', 5062);">回复</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li id="comment-5061"
-                                                        class="comment-body comment-child2 comment-level-even comment-odd">
-                                                        <div id="div-comment-5061" class="comment-body">
-                                                            <a class="pull-left thumb-sm">
-                                                                <img nogallery
-                                                                     src="images/8f4ff4290e964805a6f097b60f920123.gif"
-                                                                     class="avatar-40 photo img-circle"
-                                                                     style="height:40px!important; width: 40px!important;">
-                                                            </a>
-                                                            <div class="m-b m-l-xxl">
-                                                                <div class="comment-meta">
-<span class="comment-author vcard">
-<b class="fn"><a href="http://longxianwen.net" target="_blank" rel="external nofollow">龙显文</a></b> </span>
-                                                                    <div class="comment-metadata">
-                                                                        <time class="format_time text-muted text-xs block m-t-xs"
-                                                                              pubdate="pubdate"
-                                                                              datetime="2018-05-11T08:38:18+08:00">4
-                                                                            天前
-                                                                        </time>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="comment-content m-t-sm">
-                                                                        <span class="comment-author-at"><b><a
-                                                                                        href="#comment-5058">@友人C</a></b></span><span
-                                                                            class="comment-content-true">
-<p>年轻人的烦恼总是那么相似<img src="images/knife.png" class="emotion-aru"> </p> </span>
-                                                                </div>
-                                                                <div class="comment-reply m-t-sm">
-                                                                    <a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5061#respond-post-780"
-                                                                       rel="nofollow"
-                                                                       onclick="return TypechoComment.reply('comment-5061', 5061);">回复</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ol>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </li>
                         </ol>
                         <nav class="text-center m-t-lg m-b-lg" role="navigation"></nav>
-
                     </div>
                     <script type="text/javascript">
-                        $('#submit').click(function () {
-                            var from_data = $('#comment_form').serializeArray();
+                        /**
+                         * 提交评论
+                         */
+                        $("body").on("click", ".submit", function() {
+                            var pid=$(this).attr('data-pid');
+                            var from_data;
+                            if(pid>0){
+                                from_data =$('.comment-form-'+pid).serializeArray();
+                            }else{
+                                from_data =$('.comment-form').serializeArray();
+                            }
                             var data = [];
                             $.each(from_data,function(i){
                                 data[from_data[i].name] = from_data[i].value;
                             });
-                            console.log(data);
                             data = array_to_object(data);
                             var add_url="<?= \yii\helpers\Url::toRoute(['index/guest'])?>";
                             var list=$('.comment-list');
                             if(data){
                                 ajax_post(add_url,data,function (re) {
-                                    console.log(re);
                                     check_data(re,1);
-
                                     if(re.code==200){
-                                        var html='<li id="comment-5053" class="comment-body comment-parent comment-odd">\n' +
+                                        var pid=0;
+                                        var content='';
+                                        if(re.data.parent_id>0){
+                                            pid=re.data.parent_id;
+                                            content='<p><b>@'+re.data.reply+'</b> ' + re.data.content+ '</p>';
+                                        }else{
+                                            pid=re.data.guest_id;
+                                            content='<p>' + re.data.content+ '</p>';
+                                        }
+                                        var html='<li id="comment-'+re.data.guest_id+'" class="comment-body comment-parent comment-odd">';
+                                        var body=
                                             '<div class="comment-body">\n' +
                                             '<a class="pull-left thumb-sm">\n' +
                                             '<img nogallery src="/common/img/me.jpg" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;"> </a>\n' +
@@ -379,23 +295,26 @@ use yii\helpers\Html;
                                             '<b></b>\n' +
                                             '</span>\n' +
                                             '<span class="comment-content-true">\n' +
-                                            '<p>' + data['content']+
-                                            '</p>\n' +
+                                            content+
                                             '</span>\n' +
                                             '</div>\n' +
                                             '<div class="comment-reply m-t-sm">\n' +
-                                            '<a href="https://www.ihewro.com/archives/780/comment-page-1?replyTo=5053#respond-post-780" rel="nofollow" onclick="return TypechoComment.reply(\'comment-5053\', 5053);">回复</a>\n' +
+                                            '<a href="javascript:void(0);" class="reply-msg" data-id="'+pid+'" data-article="'+pid+'" onclick="reply(this,'+pid+','+re.data.article_id+','+re.data.guest_id+')">回复</a>\n'+
+'                                                <div class="reply"></div>'+
                                             '</div>\n' +
                                             '</div>\n' +
-                                            '</div>\n' +
-                                            '</li>';
-
+                                            '</div>\n' ;
+                                        var html2= '</li>';
                                         layer.msg(re.msg, {icon: 1,time:1000});
-                                        console.log(html);
-                                        list.prepend(html);
-
-
-//                                        parent.window.location.reload();
+                                        if(re.data.parent_id>0){
+                                            $('.comment-son-'+re.data.parent_id).append(body);
+                                        }else{
+                                            list.prepend(html+body+html2);
+                                        }
+                                        //如果是回复，评论后关闭回复框
+                                        if(pid>0){
+                                            $('.comment-form-'+pid).parent('.reply').html('');
+                                        }
                                     }else{
                                         layer.msg(re.msg, {icon: 5,time:2000});
                                     }
@@ -404,6 +323,61 @@ use yii\helpers\Html;
                                 layer.msg('请填写资料', {icon: 5,time:2000});
                             }
                         });
+
+                        /**
+                         * 点击回复
+                         * @param obj
+                         * @param guest_id
+                         * @param article_id
+                         * @param two_id
+                         */
+                        function reply(obj,guest_id,article_id,two_id) {
+                            var html=
+                                '<h4 id="reply-title" class="comment-reply-title m-t-lg m-b">发表评论\n' +
+                                '                                <small class="cancel-comment-reply">\n' +
+                                '                                    <a id="cancel-comment-reply-link" href="javascript:void(0);" onclick="cacel(this);" style="">取消回复</a> </small>\n' +
+                                '                            </h4>' +
+                                '<form method="post" onsubmit="return false" class="comment-form-'+guest_id+'" role="form">\n' +
+                                '                                <input type="hidden" name="article_id" value="'+article_id+'">\n' +
+                                '                                <input type="hidden" name="parent_id" value="'+guest_id+'">\n' +
+                                '                                <input type="hidden" name="two_id" value="'+two_id+'">\n' +
+                                '                                <div class=" form-group">\n' +
+                                '                                    <label for="comment">评论 <span class=" text-danger">*</span></label>\n' +
+                                '                                    <textarea class="textarea form-control OwO-textarea" name="content" rows="5" placeholder="说点什么吧……" ></textarea>\n' +
+                                '                                    <div class="OwO"></div>\n' +
+                                '                                </div>\n' +
+                                '                                <div id="author_info" class="row row-sm">\n' +
+                                '                                    <div class=" form-group col-sm-6 col-md-4">\n' +
+                                '                                        <label for="author">名称 <span class=" text-danger">*</span></label>\n' +
+                                '                                        <input class="form-control" name="username" type="text" maxlength="245" placeholder="姓名或昵称" required>\n' +
+                                '                                    </div>\n' +
+                                '                                    <div class=" form-group col-sm-6 col-md-4">\n' +
+                                '                                        <label >邮箱 <span class=" text-danger">*</span>\n' +
+                                '                                        </label>\n' +
+                                '                                        <input type="text" name="email" class="form-control" placeholder="邮箱 (必填,将保密)" required/>\n' +
+                                '                                    </div>\n' +
+                                '                                    <div class=" form-group col-sm-12 col-md-4">\n' +
+                                '                                        <label for="url">地址</label>\n' +
+                                '                                        <input class="form-control" name="url" type="url" maxlength="200" placeholder="网站或博客"></div>\n' +
+                                '                                </div>\n' +
+                                '                                <div class="form-group">\n' +
+                                    '<button type="submit" name="submit" class="submit btn btn-success padder-lg" data-pid="'+guest_id+'">' +
+                                '                                        <span class="text">发表评论</span>\n' +
+                                '                                        <span class="text-active">提交中...</span>\n' +
+                                '                                    </button>'+
+                                '                                    <i class="animate-spin fa fa-spinner hide" id="spin"></i>\n' +
+                                '                                </div>\n' +
+                                '                            </form>';
+                            $(obj).next('.reply').html(html);
+                        }
+
+                        /**
+                         * 取消回复
+                         * @param obj
+                         */
+                        function cacel(obj) {
+                            $(obj).parents('.reply').html('');
+                        }
                     </script>
 
                 </div>
