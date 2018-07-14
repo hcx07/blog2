@@ -98,6 +98,25 @@ class IndexController extends Controller{
                 Helper::response([],$error[0],300);
             }
         }
-
+    }
+    public function actionCate(){
+        $cate_id=\Yii::$app->request->get('cate_id');
+        $query=Article::find();
+        $total=$query->where(['cate_id'=>$cate_id])->count();
+        $page=new Pagination([
+            'totalCount'=>$total,
+            'defaultPageSize'=>10,
+        ]);
+        $model=$query
+            ->offset($page->offset)
+            ->limit($page->limit)
+            ->where(['cate_id'=>$cate_id])
+            ->orderBy(['article.is_top'=>SORT_DESC,'article.created_time'=>SORT_DESC])
+            ->all();
+        foreach ($model as &$item){
+            $guest_count=Guestbook::find()->where(['article_id'=>$item->article_id])->count();
+            $item['guest_count']=$guest_count?$guest_count.' 条评论':'暂无评论';
+        }
+        return $this->render('index',['model'=>$model,'page'=>$page]);
     }
 }

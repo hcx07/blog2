@@ -152,7 +152,7 @@ use yii\helpers\Html;
                                 $cate=\backend\models\Category::find()->all();
                                 foreach ($cate as $item):
                                 ?>
-                                    <li><a href="<?=\yii\helpers\Url::toRoute(['article/cate','cate_id'=>$item->cate_id])?>"><span><?=$item->cate_name?></span></a></li>
+                                    <li><a href="<?=\yii\helpers\Url::toRoute(['index/cate','cate_id'=>$item->cate_id])?>"><span><?=$item->cate_name?></span></a></li>
                                 <?php endforeach;?>
                             </ul>
                         </li>
