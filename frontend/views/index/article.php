@@ -171,7 +171,7 @@ use yii\helpers\Html;
                                 </div>
                             </form>
                         </div>
-                        <h4 class="comments-title m-t-lg m-b"><?=$count?> 条评论</h4>
+                        <h4 class="comments-title m-t-lg m-b article-count"><?=$count?> 条评论</h4>
                         <ol class="comment-list">
                             <?php foreach ($guest as $item):?>
                                 <li class="comment-body comment-parent comment-odd comment-<?=$item['guest_id']?>">
@@ -311,9 +311,12 @@ use yii\helpers\Html;
                                         }else{
                                             list.prepend(html+body+html2);
                                         }
+                                        $('.article-count').html(re.data.count+' 条评论');
                                         //如果是回复，评论后关闭回复框
-                                        if(pid>0){
-                                            $('.comment-form-'+pid).parent('.reply').html('');
+                                        if($(this).attr('data-pid')>0){
+                                            $('.comment-form-'+$(this).attr('data-pid')).parent('.reply').html('');
+                                        }else{
+                                            $('.comment-form')[0].reset(); //清空表单
                                         }
                                     }else{
                                         layer.msg(re.msg, {icon: 5,time:2000});

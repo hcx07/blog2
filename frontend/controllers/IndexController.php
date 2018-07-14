@@ -89,6 +89,9 @@ class IndexController extends Controller{
                 }else{
                     $data['reply']='';
                 }
+                $data['count']=Guestbook::find()
+                    ->where(['article_id'=>$data['article_id']])
+                    ->count();
                 Helper::response($data,'评论成功');
             }else{
                 $error=array_values($model->getFirstErrors());
