@@ -313,9 +313,10 @@ use yii\helpers\Html;
                                         }
                                         $('.article-count').html(re.data.count+' 条评论');
                                         //如果是回复，评论后关闭回复框
-                                        if($(this).attr('data-pid')>0){
-                                            $('.comment-form-'+$(this).attr('data-pid')).parent('.reply').html('');
-                                        }else{
+                                        if(pid>0){
+                                            $('.comment-form-'+pid).parent('.reply').html('');
+                                        }
+                                        if($(this).attr('data-pid')==0){
                                             $('.comment-form')[0].reset(); //清空表单
                                         }
                                     }else{
