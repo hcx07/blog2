@@ -71,10 +71,12 @@ class ArticleController extends BackendController
                 \Yii::$app->session->setFlash('error', '请输入文章内容！');
                 return $this->redirect(['article/add']);
             }
-            if($model->load($post) && $model->validate()){
+            if($model->load($post,'') && $model->validate()){
                 $model->created_time=time();
                 $model->content=$post['content'];
-                $model->img=$post['img'];
+                if(isset($post['img'])){
+                    $model->img=$post['img'];
+                }
                 $model->save();
                 \Yii::$app->session->setFlash('success', '添加成功！');
                 return $this->redirect(['article/index']);
@@ -113,7 +115,9 @@ class ArticleController extends BackendController
             if ($model->validate()) {
                 $model->content = $post['content'];
                 $model->update_time=time();
-                $model->img=$post['img'];
+                if(isset($post['img'])){
+                    $model->img=$post['img'];
+                }
                 $model->save();
                 \Yii::$app->session->setFlash('success', '修改成功！');
                 return $this->redirect(['article/index']);
