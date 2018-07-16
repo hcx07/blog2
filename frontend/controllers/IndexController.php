@@ -65,6 +65,10 @@ class IndexController extends Controller{
             }
             $item['son']=$son;
         }
+        //文章浏览量+1
+        $article=Article::findOne(['article_id'=>$article_id]);
+        $article->views+=1;
+        $article->save();
         return $this->render('article',['model'=>$model,'guest'=>$guest,'count'=>$count]);
     }
     /**
@@ -99,6 +103,11 @@ class IndexController extends Controller{
             }
         }
     }
+
+    /**
+     * @return string
+     * 获取当前文章分类
+     */
     public function actionCate(){
         $cate_id=\Yii::$app->request->get('cate_id');
         $query=Article::find();

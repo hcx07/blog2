@@ -67,6 +67,20 @@ use yii\helpers\Url;
     </div>
 
     <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>创建时间：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <div class="form-group field-article-created_time">
+                <?php if($model->created_time):?>
+                    <input type="datetime-local" id="article-created_time" class="input-text" name="created_time" value="<?=date('Y-m-d',$model->created_time).'T'.date('H:i:s',$model->created_time)?>">
+                <?php else:?>
+                <input type="datetime-local" id="article-created_time" class="input-text" name="created_time" value="<?=date('Y-m-d').'T'.date('H:i:s')?>">
+                <?php endif;?>
+                <p class="help-block help-block-error"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章内容：</label>
         <div class="formControls col-xs-8 col-sm-9">
             <div>

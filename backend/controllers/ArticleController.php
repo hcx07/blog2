@@ -9,6 +9,7 @@ namespace backend\controllers;
 use backend\helpers\Helper;
 use backend\models\Article;
 use backend\models\Category;
+use function GuzzleHttp\Psr7\str;
 use yii\data\Pagination;
 class ArticleController extends BackendController
 {
@@ -67,16 +68,13 @@ class ArticleController extends BackendController
         }
         if($post=\Yii::$app->request->post()){
             $post['content']=html_entity_decode(trim($post['content']));
+            $post['created_time']=strtotime(str_replace("T"," ",$post['created_time']));
             if(empty($post['content'])){
                 \Yii::$app->session->setFlash('error', '请输入文章内容！');
                 return $this->redirect(['article/add']);
             }
-            if($model->load($post,'') && $model->validate()){
-                $model->created_time=time();
-                $model->content=$post['content'];
-                if(isset($post['img'])){
-                    $model->img=$post['img'];
-                }
+            if($model->load($post) && $model->load($post,'') && $model->validate()){
+                $model->created_time=$post['created_time'];
                 $model->save();
                 \Yii::$app->session->setFlash('success', '添加成功！');
                 return $this->redirect(['article/index']);
@@ -106,18 +104,18 @@ class ArticleController extends BackendController
             \Yii::$app->session->setFlash('error', '还没有文章分类哟！');
             return $this->redirect(['cate/add']);
         }
-        if ($model->load(\Yii::$app->request->post())) {
-            $post = \Yii::$app->request->post();
+        $post = \Yii::$app->request->post();
+        if($post){
+            $post['created_time']=strtotime(str_replace("T"," ",$post['created_time']));
             if (empty($post['content']) || (!$post['content'])) {
                 \Yii::$app->session->setFlash('error', '必须要输入内容哦！');
                 return $this->redirect(['article/edit']);
             }
-            if ($model->validate()) {
-                $model->content = $post['content'];
-                $model->update_time=time();
-                if(isset($post['img'])){
-                    $model->img=$post['img'];
+            if ($model->load($post) && $model->load($post,'') && $model->validate()) {
+                if(!isset($post['img'])){
+                    $model->img='';
                 }
+                $model->created_time=$post['created_time'];
                 $model->save();
                 \Yii::$app->session->setFlash('success', '修改成功！');
                 return $this->redirect(['article/index']);
@@ -127,6 +125,7 @@ class ArticleController extends BackendController
                 return $this->redirect(['article/index']);
             }
         }
+
         return $this->renderPartial('add', ['model' => $model, 'category' => $category]);
     }
 
