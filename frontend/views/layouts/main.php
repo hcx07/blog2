@@ -50,21 +50,19 @@ use yii\helpers\Html;
             <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
                 <i class="fa fa-menu text-lg"></i>
             </button>
-            <a href="<?= \yii\helpers\Url::toRoute(['index/index']) ?>" class="navbar-brand text-lt">
+            <a href="<?= \yii\helpers\Url::toRoute(['index/index'])?>" class="navbar-brand text-lt">
                 <i class="iconfont icon-shouyeshouye"></i>
                 <span class="hidden-folded m-l-xs">木鸟</span>
             </a>
         </div>
         <div class="collapse pos-rlt navbar-collapse box-shadow bg-dark">
-            <form id="searchform" class="navbar-form navbar-form-sm navbar-left shift" method="post" role="search">
+            <form id="searchform" class="navbar-form navbar-form-sm navbar-left shift" method="get" role="search" href="<?= \yii\helpers\Url::toRoute(['index/index'])?>">
                 <div class="form-group">
                     <div class="input-group">
-                        <input data-instant id="keyword" type="search" name="s"
-                               class="form-control input-sm bg-light no-border rounded padder" required
-                               placeholder="输入关键词搜索">
+                        <input data-instant id="keyword" type="search" name="search" class="form-control input-sm bg-light no-border rounded padder" required placeholder="输入关键词搜索" value="<?=Yii::$app->request->get('search')?>">
                         <span class="input-group-btn">
-<button data-instant type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-</span>
+                        <button data-instant type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+                        </span>
                     </div>
                 </div>
             </form>

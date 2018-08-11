@@ -23,6 +23,9 @@ class IndexController extends Controller{
      */
     public function actionIndex(){
         $query=Article::find();
+        if($key=\Yii::$app->request->get('search')){
+            $query->where(['like','title',trim($key)]);
+        }
         $total=$query->count();
         $page=new Pagination([
             'totalCount'=>$total,
