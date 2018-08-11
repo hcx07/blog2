@@ -69,37 +69,6 @@ use yii\helpers\Html;
                 </div>
             </form>
             <a href="" style="display: none" id="searchUrl"></a>
-            <ul class="nav navbar-nav navbar-right">
-
-
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        <i class="fa fa-bell icon-fw"></i>
-                        <span class="visible-xs-inline">
-閒言碎語 </span>
-                        <span class="badge badge-sm up bg-danger pull-right-xs"></span>
-                    </a>
-                    <div class="dropdown-menu w-xl animated fadeInUp">
-                        <div class="panel bg-white">
-                            <div class="panel-heading b-light bg-light">
-                                <strong>
-                                    随便写写 </strong>
-                            </div>
-                            <div class="list-group" id="smallRecording">
-                                <a href="https://www.ihewro.com/index.php/cross.html" class="list-group-item"><span
-                                            class="clear block m-b-none words_contents">我们一路奋战，不是为了改变这个世界 而是为了不让世界改变我们。这个世界的阴暗面比黑夜还黑，只是我们看不见，别以为在白天看着太阳，以为这个世界有多光明。 ​​​<br><small
-                                                class="text-muted">2017-11-24 00:02:00</small></span></a><a
-                                        href="https://www.ihewro.com/index.php/cross.html" class="list-group-item"><span
-                                            class="clear block m-b-none words_contents">“都崭新，都暗淡，都独立，都有明天。”<br><small
-                                                class="text-muted">2017-11-23 22:22:47</small></span></a><a
-                                        href="https://www.ihewro.com/index.php/cross.html" class="list-group-item"><span
-                                            class="clear block m-b-none words_contents">想来handsome已经一年。
-这一年的变化，真的太大了，我也经历了很多...很多感慨，然而还得先去写作业……<br><small class="text-muted">2017-11-17 21:39:32</small></span></a></div>
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
         </div>
     </header>
     <aside id="aside" class="app-aside hidden-xs bg-light">

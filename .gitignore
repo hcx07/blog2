@@ -37,3 +37,4 @@ phpunit.phar
 /frontend/runtime
 /backend/assets
 /frontend/assets
+/backend/config/main-local.php
