@@ -59,7 +59,7 @@
             <dt><span class="glyphicon glyphicon-list-alt"></span> 文章管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=article/index"
+                    <li><a href="<?= \yii\helpers\Url::toRoute(['article/index'])?>"
                            title="文章列表">文章列表</a></li>
                 </ul>
             </dd>
@@ -68,7 +68,7 @@
             <dt><span class="glyphicon glyphicon-list"></span> 分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=article/cate" title="分类列表">分类列表</a>
+                    <li><a href="<?= \yii\helpers\Url::toRoute(['article/cate'])?>" title="分类列表">分类列表</a>
                     </li>
                 </ul>
             </dd>
@@ -77,7 +77,7 @@
             <dt ><span class="glyphicon glyphicon-envelope"></span> 留言管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd >
                 <ul>
-                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=message/index" title="留言列表">留言列表</a>
+                    <li><a href="<?= \yii\helpers\Url::toRoute(['message/index'])?>" title="留言列表">留言列表</a>
                     </li>
                 </ul>
             </dd>
@@ -86,7 +86,7 @@
             <dt ><span class="glyphicon glyphicon-paperclip"></span> 友情链接管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd >
                 <ul>
-                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=link/index" title="链接列表">链接列表</a>
+                    <li><a href="<?= \yii\helpers\Url::toRoute(['url/index'])?>" title="链接列表">链接列表</a>
                     </li>
                 </ul>
             </dd>
@@ -95,7 +95,7 @@
             <dt><span class="glyphicon glyphicon-pencil"></span> 操作日志<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd >
                 <ul>
-                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=log/index" title="操作日志列表">操作日志列表</a>
+                    <li><a href="<?= \yii\helpers\Url::toRoute(['log/index'])?>" title="操作日志列表">操作日志列表</a>
                     </li>
                 </ul>
             </dd>
@@ -104,7 +104,7 @@
             <dt><span class="glyphicon glyphicon-user"></span> 管理员<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd >
                 <ul>
-                    <li><a href="<?php echo Yii::$app->request->hostInfo; ?>/index.php?r=user/index" title="管理员列表">管理员列表</a>
+                    <li><a href="<?= \yii\helpers\Url::toRoute(['user/index'])?>" title="管理员列表">管理员列表</a>
                     </li>
                 </ul>
             </dd>

@@ -74,10 +74,9 @@
                 type: 'post',
                 url: '<?=\yii\helpers\Url::toRoute(['article/cate-add'])?>',
                 success: function(data) {
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.msg("添加成功",{icon: 1,time:1000});
-                    parent.layer.close(index);
-                    parent.reload();
+                    layer.msg('添加成功', {icon: 1, time: 2000}, function () {
+                        setTimeout("window.parent.location.reload()", 1);
+                    });
                 },
                 error: function (data) {
                     console.log(data);

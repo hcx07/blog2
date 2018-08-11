@@ -20,17 +20,16 @@
     $form = \yii\bootstrap\ActiveForm::begin([
         'options' => ['class' => 'form form-horizontal', 'id' => 'form-article-add']
     ]); ?>
-    <?= $form->field($model, 'cate_id')->textInput(['type' => 'hidden'])->label(false) ?>
     <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类名：</label>
+        <label class="form-label col-xs-2 col-sm-2"><span class="c-red">*</span>名称：</label>
         <div class="formControls col-xs-8 col-sm-9">
-            <?= $form->field($model, 'cate_name')->textInput(['class' => 'input-text'])->label(false) ?>
+            <?= $form->field($model, 'name')->textInput(['class' => 'input-text','style'=>'width: 400px'])->label(false) ?>
         </div>
     </div>
     <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>排序号：</label>
+        <label class="form-label col-xs-2 col-sm-2"><span class="c-red">*</span>地址：</label>
         <div class="formControls col-xs-8 col-sm-9">
-            <?= $form->field($model, 'order_no')->textInput(['class' => 'input-text'])->label(false) ?>
+            <?= $form->field($model, 'src')->textInput(['class' => 'input-text','style'=>'width: 400px'])->label(false) ?>
         </div>
     </div>
     <div class="row cl">
@@ -41,31 +40,11 @@
     <?php \yii\bootstrap\ActiveForm::end(); ?>
 </article>
 <script type="text/javascript">
-    function hq(){
-        //声明一个随机数变量，默认为1
-        var GetRandomn = 1;
-        //js生成时间戳
-        var timestamp=new Date().getTime();
-        //获取随机范围内数值的函数
-        function GetRandom(n){
-            //由随机数+时间戳+1组成
-            GetRandomn=Math.floor(Math.random()*n+timestamp+1);
-        }
-        //开始调用，获得一个1-100的随机数
-        GetRandom("30");
-        //把随机数GetRandomn 赋给 input文本框.根据input的id
-        $('#number').val(GetRandomn);
-        //调试输出查看
-        //alert(GetRandomn);
-    }
-
 
     $("#form-article-add").validate({
         rules:{
-            "Category[order_no]":{
-                "number":true,
-                "min":1
-            },
+            "name":"required",
+            "src":"url"
         },
         onkeyup:false,
         focusCleanup:true,
@@ -73,9 +52,9 @@
         submitHandler:function(form){
             $(form).ajaxSubmit({
                 type: 'post',
-                url: '<?=\yii\helpers\Url::toRoute(['article/do-cate-edit'])?>',
+                url: '<?=\yii\helpers\Url::toRoute(['url/add'])?>',
                 success: function(data) {
-                    layer.msg('修改成功', {icon: 1, time: 2000}, function () {
+                    layer.msg('添加成功', {icon: 1, time: 2000}, function () {
                         setTimeout("window.parent.location.reload()", 1);
                     });
                 },
