@@ -11,6 +11,8 @@ use backend\models\Article;
 use backend\models\Category;
 use backend\models\Guestbook;
 use yii\data\Pagination;
+use yii\db\Exception;
+use yii\db\Expression;
 use yii\web\Controller;
 
 class IndexController extends Controller{
@@ -127,5 +129,40 @@ class IndexController extends Controller{
             $item['guest_count']=$guest_count?$guest_count.' 条评论':'暂无评论';
         }
         return $this->render('index',['model'=>$model,'page'=>$page]);
+    }
+
+    /**
+     * 获取右栏推荐
+     */
+    public function actionGetHot(){
+        //获取热门文章
+        $model=Article::find()
+            ->where(['article.status'=>1])
+            ->select([
+                "guest_num"=>new Expression("(select count(*) from guestbook where guestbook.article_id=article.article_id and guestbook.flag=0)"),
+                "article.title",
+                "article.article_id",
+                "article.views"
+            ]);
+        $hot=$model
+            ->orderBy("guest_num desc,article.views desc,article.created_time desc")
+            ->limit(2)
+            ->asArray()
+            ->all();
+        //获取最新评论
+        $guest=Guestbook::find()
+            ->innerJoin(Article::tableName(),"article.article_id=guestbook.article_id")
+            ->where(['article.status'=>1,'guestbook.flag'=>0])
+            ->select('guestbook.username,guestbook.content,guestbook.article_id')
+            ->orderBy("guestbook.created_time desc")
+            ->limit(2)
+            ->asArray()
+            ->all();
+        //获取随机文章
+        $article=$model
+            ->limit(2)
+            ->asArray()
+            ->all();
+        Helper::response(['hot'=>$hot,'guest'=>$guest,'article'=>$article]);
     }
 }

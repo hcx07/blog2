@@ -13,6 +13,7 @@ use Yii;
  */
 class Category extends \yii\db\ActiveRecord
 {
+    public $article_num;
 
     /**
      * @inheritdoc

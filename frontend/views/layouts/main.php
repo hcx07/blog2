@@ -149,7 +149,13 @@ use yii\helpers\Html;
                                     </a>
                                 </li>
                                 <?php
-                                $cate=\backend\models\Category::find()->all();
+                                $cate=\backend\models\Category::find()
+                                    ->select([
+                                        "article_num"=>new \yii\db\Expression("(select count(*) from article where article.cate_id=category.cate_id and article.status=1)"),
+                                        "category.cate_id",
+                                        "category.cate_name",
+                                    ])
+                                    ->all();
                                 foreach ($cate as $item):
                                 ?>
                                     <li><a href="<?=\yii\helpers\Url::toRoute(['index/cate','cate_id'=>$item->cate_id])?>"><span><?=$item->cate_name?></span></a></li>
@@ -218,167 +224,55 @@ use yii\helpers\Html;
                 <div class="nav-tabs-alt no-js-hide">
                     <ul class="nav nav-tabs nav-justified" role="tablist">
                         <li class="active" role="presentation">
-                            <a href="#widget-tabs-4-hots" role="tab" aria-controls="widget-tabs-4-hots" aria-expanded="true" data-toggle="tab"> <i
- class="glyphicon glyphicon-fire text-md text-muted wrapper-sm" aria-hidden="true"></i>
-                                <span class="sr-only">推荐文章</span> </a>
+                            <a href="#widget-tabs-4-hots" role="tab" aria-controls="widget-tabs-4-hots" aria-expanded="true" data-toggle="tab">
+                                <i class="glyphicon glyphicon-fire text-md text-muted wrapper-sm" aria-hidden="true"></i>
+                                <span class="sr-only">推荐文章</span>
+                            </a>
                         </li>
                         <li role="presentation">
-                            <a href="#widget-tabs-4-comments" role="tab"
-                                                   aria-controls="widget-tabs-4-comments"
-                                                   aria-expanded="false" data-toggle="tab"> <i
-                                        class="glyphicon glyphicon-comment text-md text-muted wrapper-sm"
-                                        aria-hidden="true"></i> <span class="sr-only">最新评论</span> </a>
+                            <a href="#widget-tabs-4-comments" role="tab" aria-controls="widget-tabs-4-comments" aria-expanded="false" data-toggle="tab">
+                                <i class="glyphicon glyphicon-comment text-md text-muted wrapper-sm" aria-hidden="true"></i>
+                                <span class="sr-only">最新评论</span>
+                            </a>
                         </li>
                         <li role="presentation">
-                            <a href="#widget-tabs-4-random" role="tab"
-                                                   aria-controls="widget-tabs-4-random"
-                                                   aria-expanded="false" data-toggle="tab"> <i
-                                        class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"
-                                        aria-hidden="true"></i> <span class="sr-only">随机文章</span> </a>
+                            <a href="#widget-tabs-4-random" role="tab" aria-controls="widget-tabs-4-random" aria-expanded="false" data-toggle="tab">
+                                <i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm" aria-hidden="true"></i>
+                                <span class="sr-only">随机文章</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
                 <div class="tab-content">
                     <div id="widget-tabs-4-hots" class="tab-pane wrapper-md active" role="tabpanel">
                         <h3 class="widget-title m-t-none text-md">热门文章</h3>
-                        <ul class="list-group no-bg no-borders pull-in m-b-none">
-                            <li class="list-group-item">
-
-                                <div class="clear">
-                                    <h4 class="h5 l-h"><a href="https://www.ihewro.com/archives/489/"
-                                                          title="handsome —— 一如少年般模样"> handsome ——
-                                            一如少年般模样 </a></h4>
-                                    <small class="text-muted">
-<span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span
-            class="sr-only">评论数：</span> <span class="meta-value">840</span>
-</span>
-                                        <span class="meta-date m-l-sm"> <i class="fa fa-eye"
-                                                                           aria-hidden="true"></i> <span
-                                                    class="sr-only">浏览次数:</span> <span
-                                                    class="meta-value">285165</span>
-</span>
-                                    </small>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-
-                                <div class="clear">
-                                    <h4 class="h5 l-h"><a href="https://www.ihewro.com/archives/378/"
-                                                          title="Leaf — A Typecho Theme"> Leaf — A Typecho
-                                            Theme </a></h4>
-                                    <small class="text-muted">
-<span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span
-            class="sr-only">评论数：</span> <span class="meta-value">91</span>
-</span>
-                                        <span class="meta-date m-l-sm"> <i class="fa fa-eye"
-                                                                           aria-hidden="true"></i> <span
-                                                    class="sr-only">浏览次数:</span> <span
-                                                    class="meta-value">15875</span>
-</span>
-                                    </small>
-                                </div>
-                            </li>
+                        <ul class="list-group no-bg no-borders pull-in m-b-none list-hot">
 
                         </ul>
                     </div>
                     <div id="widget-tabs-4-comments" class="tab-pane wrapper-md no-js-show" role="tabpanel">
-                        <h3 class="widget-title m-t-none text-md">最新評論</h3>
-                        <ul class="list-group no-borders pull-in auto m-b-none">
-                            <li class="list-group-item">
-
-                                <a href="https://www.ihewro.com/archives/737/comment-page-1#comment-4576"
-                                   class="text-muted">
-                                    <i class="fa fa-comment-o pull-right m-t-sm text-sm" title="詳情"
-                                       aria-hidden="true" data-toggle="tooltip"
-                                       data-placement="auto left"></i>
-                                    <span class="sr-only">評論詳情</span>
-                                </a>
-                                <div class="clear">
-                                    <div class="text-ellipsis">
-                                        <a href="https://www.ihewro.com/archives/737/comment-page-1#comment-4576"
-                                           title="jcomey"> jcomey </a>
-                                    </div>
-                                    <small class="text-muted"><span>摩羯座</span>
-                                    </small>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-
-                                <a href="https://www.ihewro.com/archives/737/comment-page-1#comment-4575"
-                                   class="text-muted">
-                                    <i class="fa fa-comment-o pull-right m-t-sm text-sm" title="詳情"
-                                       aria-hidden="true" data-toggle="tooltip"
-                                       data-placement="auto left"></i>
-                                    <span class="sr-only">評論詳情</span>
-                                </a>
-                                <div class="clear">
-                                    <div class="text-ellipsis">
-                                        <a href="https://www.ihewro.com/archives/737/comment-page-1#comment-4575"
-                                           title="LiarOnce"> LiarOnce </a>
-                                    </div>
-                                    <small class="text-muted"><span>我期中考刚刚考完
-一说11月刚好我弟过生日，真巧</span>
-                                    </small>
-                                </div>
-                            </li>
+                        <h3 class="widget-title m-t-none text-md">最新评论</h3>
+                        <ul class="list-group no-borders pull-in auto m-b-none list-guest">
 
                         </ul>
                     </div>
                     <div id="widget-tabs-4-random" class="tab-pane wrapper-md no-js-show" role="tabpanel">
-                        <h3 class="widget-title m-t-none text-md">隨機文章</h3>
-                        <ul class="list-group no-bg no-borders pull-in m-b-none">
-                            <li class="list-group-item">
+                        <h3 class="widget-title m-t-none text-md">随机文章</h3>
+                        <ul class="list-group no-bg no-borders pull-in m-b-none list-article">
 
-                                <div class="clear">
-                                    <h4 class="h5 l-h"><a href="https://www.ihewro.com/archives/443/"
-                                                          title="此内容被密码保护"> 此内容被密码保护 </a></h4>
-                                    <small class="text-muted">
-<span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span
-            class="sr-only">评论数：</span> <span class="meta-value">0</span>
-</span>
-                                        <span class="meta-date m-l-sm"> <i class="fa fa-eye"
-                                                                           aria-hidden="true"></i> <span
-                                                    class="sr-only">浏览次数:</span> <span
-                                                    class="meta-value">387</span>
-</span>
-                                    </small>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-
-                                <div class="clear">
-                                    <h4 class="h5 l-h"><a href="https://www.ihewro.com/archives/523/"
-                                                          title="锚点链接跳转后位置上下偏移一定位置方法">
-                                            锚点链接跳转后位置上下偏移一定位置方法 </a></h4>
-                                    <small class="text-muted">
-<span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span
-            class="sr-only">评论数：</span> <span class="meta-value">10</span>
-</span>
-                                        <span class="meta-date m-l-sm"> <i class="fa fa-eye"
-                                                                           aria-hidden="true"></i> <span
-                                                    class="sr-only">浏览次数:</span> <span
-                                                    class="meta-value">4235</span>
-</span>
-                                    </small>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </section>
             <section id="categories-2" class="widget widget_categories wrapper-md clear">
-                <h3 class="widget-title m-t-none text-md">分類</h3>
+                <h3 class="widget-title m-t-none text-md">分类</h3>
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="https://www.ihewro.com/category/tech/"> <span
-                                    class="badge pull-right">37</span>设计开发</a></li>
-                    <li class="list-group-item"><a href="https://www.ihewro.com/category/share/"> <span
-                                    class="badge pull-right">33</span>资源技巧</a></li>
-                    <li class="list-group-item"><a href="https://www.ihewro.com/category/hobby/"> <span
-                                    class="badge pull-right">8</span>兴趣爱好</a></li>
-                    <li class="list-group-item"><a href="https://www.ihewro.com/category/life/"> <span
-                                    class="badge pull-right">58</span>生活随笔</a></li>
-                    <li class="list-group-item"><a href="https://www.ihewro.com/category/others/"> <span
-                                    class="badge pull-right">5</span>文章杂烩</a></li>
+                    <?php foreach ($cate as $item):?>
+                        <li class="list-group-item">
+                            <a href="<?=\yii\helpers\Url::toRoute(['index/cate','cate_id'=>$item->cate_id])?>"> <span class="badge pull-right"><?=$item->article_num?></span><?=$item->cate_name?></a>
+                        </li>
+                    <?php endforeach;?>
+
                 </ul>
             </section>
         </div>
@@ -403,6 +297,42 @@ use yii\helpers\Html;
         }else{
             ul.attr('class','nav nav-sub dk');
         }
+    });
+    ajax_post("<?= \yii\helpers\Url::toRoute(['index/get-hot'])?>",{},function (res) {
+        var hot=res.data.hot;
+        var guest=res.data.guest;
+        var article=res.data.article;
+        var hot_html='';
+        var guest_html='';
+        var article_html='';
+        $(hot).each(function (key,item) {
+            var src="<?=\yii\helpers\Url::toRoute(['index/article'])?>?article_id="+item.article_id;
+            hot_html+='<li class="list-group-item"><div class="clear">'+
+                    '<h4 class="h5 l-h"><a href="'+src+'">'+item.title+'</a></h4>'+
+                    '<small class="text-muted">'+
+                    '<span class="meta-views"><i class="iconfont icon-comments" aria-hidden="true"></i><span class="sr-only">评论数：</span><span class="meta-value">'+item.guest_num+'</span></span>'+
+                    '<span class="meta-date m-l-sm"><i class="fa fa-eye" aria-hidden="true"></i><span class="sr-only">浏览次数:</span><span class="meta-value">'+item.views+'</span></span>'+
+                    '</small></div></li>';
+        });
+        $(guest).each(function (key,item) {
+            var src="<?=\yii\helpers\Url::toRoute(['index/article'])?>?article_id="+item.article_id;
+            guest_html+='<li class="list-group-item"><div class="clear"><div class="text-ellipsis">'+
+                    '<a href="'+src+'">'+item.username+'</a></div>'+
+                    '<small class="text-muted"><span>'+item.content+'</span>'+
+                    '</small></div></li>';
+        });
+        $(article).each(function (key,item) {
+            var src="<?=\yii\helpers\Url::toRoute(['index/article'])?>?article_id="+item.article_id;
+            article_html+='<li class="list-group-item"><div class="clear">'+
+                    '<h4 class="h5 l-h"><a href="'+src+'">'+item.title+'</a></h4>'+
+                    '<small class="text-muted"><span class="meta-views"><i class="iconfont icon-comments" aria-hidden="true"></i>'+
+                    '<span class="sr-only">评论数：</span> <span class="meta-value">'+item.guest_num+'</span></span>'+
+                    '<span class="meta-date m-l-sm"><i class="fa fa-eye" aria-hidden="true"></i><span class="sr-only">浏览次数:</span>'+
+                    '<span class="meta-value">'+item.views+'</span></span></small></div></li>';
+        });
+        $(".list-hot").html(hot_html);
+        $(".list-guest").html(guest_html);
+        $(".list-article").html(article_html);
     });
 </script>
 </body>
