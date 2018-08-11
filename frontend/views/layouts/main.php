@@ -168,32 +168,6 @@ use yii\helpers\Html;
                             <i class="fa icon-fw fa-angle-right text"></i>
                             <i class="fa icon-fw fa-angle-down text-active"></i>
                             </span>
-                                <i class="iconfont icon-176pages"></i>
-                                <span>页面</span>
-                            </a>
-                            <ul class="nav nav-sub dk">
-                                <li class="nav-sub-header">
-                                    <a data-no-instant>
-                                        <span>页面</span>
-                                    </a>
-                                </li>
-                                <li><a href="#"><span>链接库</span></a></li>
-                                <li><a href="#"><span>归档栏</span></a></li>
-                                <li><a href="#"><span>留言板</span></a></li>
-                                <li><a href="#"><span>关于我</span></a></li>
-                                <li><a href="#"><span>时光机</span></a></li>
-                                <li><a href="#"><span>万花筒</span></a></li>
-                                <li><a href="#"><span>实验室</span></a></li>
-                                <li><a href="#"><span>赞助我</span></a></li>
-                                https://www.ihewro.com
-                            </ul>
-                        </li>
-                        <li>
-                            <a data-no-instant class="auto">
-                            <span class="pull-right text-muted">
-                            <i class="fa icon-fw fa-angle-right text"></i>
-                            <i class="fa icon-fw fa-angle-down text-active"></i>
-                            </span>
                                 <i class="iconfont icon-pengyouquan"></i>
                                 <span>友链</span>
                             </a>
