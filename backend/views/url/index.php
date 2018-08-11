@@ -28,9 +28,9 @@
                     <?php foreach ($model as $item): ?>
                         <tr>
                             <td><?=$item->name?></td>
-                            <td><?=$item->url?></td>
+                            <td><?=$item->src?></td>
                             <td>
-                                <a title="修改" href="javascript:;" onclick="member_edit('修改','<?=\yii\helpers\Url::toRoute(['url/edit','url_id'=>$item->url_id])?>','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                                <a title="修改" href="javascript:;" onclick="member_edit('修改','<?=\yii\helpers\Url::toRoute(['url/edit','url_id'=>$item->url_id])?>','600','250')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
                                 <a title="删除" href="javascript:;" onclick="member_show(this,'<?=\yii\helpers\Url::toRoute(['url/del','url_id'=>$item->url_id])?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
                             </td>
                         </tr>
@@ -56,7 +56,7 @@
         layer_show(title,url,w,h);
     }
     /*用户-编辑*/
-    function member_edit(title,url,id,w,h){
+    function member_edit(title,url,w,h){
         layer_show(title,url,w,h);
     }
 
