@@ -18,9 +18,9 @@ use yii\helpers\Html;
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#3a3f51"/>
     <meta http-equiv="x-dns-prefetch-control" content="on">
-    <title>木鸟</title>
-    <meta name="description" content="我们这一生很短，我们终将会失去它，所以不妨大胆一点。"/>
-    <meta name="keywords" content="木鸟,博客,个人记录,,技术博客,PHP,JS"/>
+    <title>木鸟-PHP开发者</title>
+    <meta name="description" content="努力生活，为了爱我的人和我爱的人"/>
+    <meta name="keywords" content="木鸟,博客,个人记录,,技术博客,PHP,JS,web开发"/>
     <meta name="template" content="handsome"/>
     <?= Html::cssFile('@web/ihewro/css/bootstrap.min.css') ?>
     <?= Html::cssFile('@web/ihewro/css/function.min.css') ?>

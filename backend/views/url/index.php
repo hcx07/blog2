@@ -12,7 +12,7 @@
             <?=\common\widgets\Alert::widget()?>
             <div class="cl pd-5 bg-1 bk-gray mt-20">
             <span class="l">
-                <a href="javascript:;" onclick="member_add('添加链接','<?=\yii\helpers\Url::toRoute(['url/add'])?>','600','250')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加链接</a>
+                <a href="javascript:;" onclick="member_add('添加链接','<?=\yii\helpers\Url::toRoute(['url/add'])?>','600','300')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加链接</a>
             </span>
             </div>
             <div class="mt-20">
@@ -32,7 +32,7 @@
                             <td><?=$item->intro?></td>
                             <td><?=$item->src?></td>
                             <td>
-                                <a title="修改" href="javascript:;" onclick="member_edit('修改','<?=\yii\helpers\Url::toRoute(['url/edit','url_id'=>$item->url_id])?>','600','250')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                                <a title="修改" href="javascript:;" onclick="member_edit('修改','<?=\yii\helpers\Url::toRoute(['url/edit','url_id'=>$item->url_id])?>','600','300')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
                                 <a title="删除" href="javascript:;" onclick="member_show(this,'<?=\yii\helpers\Url::toRoute(['url/del','url_id'=>$item->url_id])?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
                             </td>
                         </tr>

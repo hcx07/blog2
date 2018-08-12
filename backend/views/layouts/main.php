@@ -18,8 +18,8 @@
 <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
 
-    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <title>木鸟</title>
 </head>
 <body>
