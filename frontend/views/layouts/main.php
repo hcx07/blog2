@@ -22,11 +22,11 @@ use yii\helpers\Html;
     <meta name="description" content="努力生活，为了爱我的人和我爱的人"/>
     <meta name="keywords" content="木鸟,博客,个人记录,,技术博客,PHP,JS,web开发"/>
     <meta name="template" content="handsome"/>
-    <?= Html::cssFile('@web/ihewro/css/bootstrap.min.css') ?>
-    <?= Html::cssFile('@web/ihewro/css/function.min.css') ?>
-    <?= Html::cssFile('@web/ihewro/css/handsome.min.css') ?>
-    <?= Html::cssFile('@web/ihewro/css/jquery.fancybox.min.css') ?>
-    <?= Html::cssFile('@web/ihewro/css/font.css') ?>
+    <?= Html::cssFile('@web/muniao/css/bootstrap.min.css') ?>
+    <?= Html::cssFile('@web/muniao/css/function.min.css') ?>
+    <?= Html::cssFile('@web/muniao/css/handsome.min.css') ?>
+    <?= Html::cssFile('@web/muniao/css/jquery.fancybox.min.css') ?>
+    <?= Html::cssFile('@web/muniao/css/font.css') ?>
     <style type="text/css">
         html.bg {
             background-image: -moz-radial-gradient(-20% 140%, ellipse, rgba(143, 192, 193, .6) 30%, rgba(255, 255, 227, 0) 50%), -moz-radial-gradient(60% 40%, ellipse, #d9e3e5 10%, rgba(44, 70, 76, .0) 60%), -moz-linear-gradient(-45deg, rgba(143, 181, 158, .8) -10%, rgba(213, 232, 211, .8) 80%);
@@ -35,7 +35,7 @@ use yii\helpers\Html;
             background-image: -webkit-radial-gradient(-20% 140%, ellipse, rgba(143, 192, 193, .6) 30%, rgba(255, 255, 227, 0) 50%), -webkit-radial-gradient(60% 40%, ellipse, #d9e3e5 10%, rgba(44, 70, 76, .0) 60%), -webkit-linear-gradient(-45deg, rgba(143, 181, 158, .8) -10%, rgba(213, 232, 211, .8) 80%);
         }
     </style>
-    <?= Html::jsFile('@web/ihewro/js/jquery.min.js') ?>
+    <?= Html::jsFile('@web/muniao/js/jquery.min.js') ?>
     <?= Html::jsFile('@web/layer/layer.js') ?>
     <?= Html::jsFile('@web/common/common.js') ?>
 
@@ -223,13 +223,13 @@ use yii\helpers\Html;
 </div>
 
 </div
-<?= Html::jsFile('@web/ihewro/js/meting.min.js') ?>
-<?= Html::jsFile('@web/ihewro/js/bootstrap.min.js') ?>
-<?= Html::jsFile('@web/ihewro/js/jquery.pjax.min.js') ?>
-<?= Html::jsFile('@web/ihewro/js/jquery.fancybox.min.js') ?>
-<?= Html::jsFile('@web/ihewro/js/owo.min.js') ?>
-<?= Html::jsFile('@web/ihewro/js/music.min.js') ?>
-<?= Html::jsFile('@web/ihewro/js/function.min.js') ?>
+<?= Html::jsFile('@web/muniao/js/meting.min.js') ?>
+<?= Html::jsFile('@web/muniao/js/bootstrap.min.js') ?>
+<?= Html::jsFile('@web/muniao/js/jquery.pjax.min.js') ?>
+<?= Html::jsFile('@web/muniao/js/jquery.fancybox.min.js') ?>
+<?= Html::jsFile('@web/muniao/js/owo.min.js') ?>
+<?= Html::jsFile('@web/muniao/js/music.min.js') ?>
+<?= Html::jsFile('@web/muniao/js/function.min.js') ?>
 <script>
     $('.auto').click(function () {
         var ul=$(this).next();

@@ -15,7 +15,7 @@
                         <?php foreach ($model as $item):?>
                         <div class="panel">
                             <div id="index-post-img"><a href="<?=\yii\helpers\Url::toRoute(['index/article','article_id'=>$item->article_id])?>">
-                                    <div class="item-thumb" style="background-image: url(ihewro/images/1050773382.png)"></div>
+                                    <div class="item-thumb" style="background-image: url(muniao/images/1050773382.png)"></div>
                                 </a></div>
                             <div class="post-meta wrapper-lg">
                                 <h2 class="m-t-none index-post-title"><a

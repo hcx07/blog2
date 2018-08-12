@@ -8,7 +8,7 @@
             <div class="col">
                 <header class="bg-light lter b-b wrapper-md">
                     <h1 class="m-n font-thin h3 text-black l-h">木鸟</h1>
-                    <small class="text-muted letterspacing">那就一直飞吧，停留枝头，也落在陆地。</small>
+                    <small class="text-muted letterspacing">努力生活，为了爱我的人和我爱的人。</small>
                 </header>
                 <div class="wrapper-md">
                     <div class="blog-post">
