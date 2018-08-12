@@ -30,7 +30,7 @@ class Url extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'created_time'], 'integer'],
-            [['src', 'name'], 'string', 'max' => 255],
+            [['src', 'name','intro'], 'string', 'max' => 255],
         ];
     }
 
@@ -45,6 +45,7 @@ class Url extends \yii\db\ActiveRecord
             'name' => 'Name',
             'status' => '0 正常 1删除',
             'created_time' => 'Created Time',
+            'intro' => 'intro',
         ];
     }
 }

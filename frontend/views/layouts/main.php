@@ -144,12 +144,12 @@ use yii\helpers\Html;
                                         <span>友链</span>
                                     </a>
                                 </li>
-                                <li><a href="https://smallk.net" target="_blank"
-                                       title="给你想知道的科技信息、数码前沿、PC经验、休闲趣事、浏览器交流等，这就是科技临时站的意义~"><span>科技临时站</span></a></li>
-                                <li><a href="https://wiki.ihewro.com/" target="_blank"
-                                       title="友人C的笔记本"><span>友人C的wiki</span></a></li>
-                                <li><a href="https://www.acgbuster.com/" target="_blank" title="以梦为马，不负韶华"><span>面码的buster</span></a>
-                                </li>
+                                <?php $url=\common\models\Url::find()->where(['status'=>0])->all();?>
+                                <?php foreach ($url as $item):?>
+                                    <li>
+                                        <a href="<?=$item->src?>" target="_blank" title="<?=$item->intro?>"><span><?=$item->name?></span></a>
+                                    </li>
+                                <?php endforeach;?>
                             </ul>
                         </li>
                     </ul>

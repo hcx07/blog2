@@ -28,6 +28,12 @@
         </div>
     </div>
     <div class="row cl">
+        <label class="form-label col-xs-2 col-sm-2"><span class="c-red">*</span>简介：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <?= $form->field($model, 'intro')->textInput(['class' => 'input-text','style'=>'width: 400px'])->label(false) ?>
+        </div>
+    </div>
+    <div class="row cl">
         <label class="form-label col-xs-2 col-sm-2"><span class="c-red">*</span>地址：</label>
         <div class="formControls col-xs-8 col-sm-9">
             <?= $form->field($model, 'src')->textInput(['class' => 'input-text','style'=>'width: 400px'])->label(false) ?>
@@ -44,6 +50,7 @@
     $("#form-article-add").validate({
         rules:{
             "name":"required",
+            "intro":"required",
             "src":"url"
         },
         onkeyup:false,
