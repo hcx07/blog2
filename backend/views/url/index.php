@@ -20,6 +20,7 @@
                     <thead>
                     <tr class="text-c">
                         <th>名称</th>
+                        <th>简介</th>
                         <th>地址</th>
                         <th>操作</th>
                     </tr>
@@ -28,6 +29,7 @@
                     <?php foreach ($model as $item): ?>
                         <tr>
                             <td><?=$item->name?></td>
+                            <td><?=$item->intro?></td>
                             <td><?=$item->src?></td>
                             <td>
                                 <a title="修改" href="javascript:;" onclick="member_edit('修改','<?=\yii\helpers\Url::toRoute(['url/edit','url_id'=>$item->url_id])?>','600','250')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
