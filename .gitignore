@@ -38,3 +38,4 @@ phpunit.phar
 /backend/assets
 /frontend/assets
 /backend/config/main-local.php
+/common/config/main-local.php
