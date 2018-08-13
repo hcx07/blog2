@@ -6,5 +6,8 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# otherwise forward it to index.php
+# otherwise forward it to index.php  cate.html?cate_id=2
 RewriteRule . index.php
+
+#设置404错误
+ErrorDocument 404 /index.html

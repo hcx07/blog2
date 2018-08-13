@@ -49,11 +49,18 @@ class IndexController extends Controller{
      * 文章详情页
      */
     public function actionArticle($article_id){
+        if(!$article_id){
+            return $this->renderPartial('error');
+        }
         $model=Article::find()
             ->innerJoin(Category::tableName(),"article.cate_id=category.cate_id")
             ->select('article.*,category.cate_id,category.cate_name')
             ->where(['article_id'=>$article_id])
             ->one();
+        if(!$model){
+//            \Yii::$app->session->setFlash('error','没有找到该文章哟');
+            return $this->renderPartial('error');
+        }
         $guest=Guestbook::find()
             ->where(['article_id'=>$article_id,'parent_id'=>0,'flag'=>0])
             ->orderBy('created_time desc')
@@ -167,5 +174,11 @@ class IndexController extends Controller{
             ->asArray()
             ->all();
         Helper::response(['hot'=>$hot,'guest'=>$guest,'article'=>$article]);
+    }
+    /**
+     * 404页面
+     */
+    public function actionError(){
+        return $this->renderPartial('error');
     }
 }
