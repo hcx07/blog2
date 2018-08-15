@@ -20,13 +20,13 @@
 
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<title>木鸟</title>
+<title>doom</title>
 </head>
 <body>
 <?php $this->beginBody() ?>
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
-		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/index.php">木鸟·后台管理系统</a>
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/index.php">doom·后台管理系统</a>
 			<span class="logo navbar-slogan f-l mr-10 hidden-xs">v1.0</span>
 
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">

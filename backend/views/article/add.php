@@ -56,7 +56,7 @@ use yii\helpers\Url;
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>作者：</label>
         <div class="formControls col-xs-8 col-sm-9">
-            <?= $form->field($model, 'author')->textInput(['class' => 'input-text','value'=>'木鸟'])->label(false) ?>
+            <?= $form->field($model, 'author')->textInput(['class' => 'input-text','value'=>'doom'])->label(false) ?>
         </div>
     </div>
     <div class="row cl">

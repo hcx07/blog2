@@ -7,7 +7,7 @@
         <div class="hbox hbox-auto-xs hbox-auto-sm">
             <div class="col">
                 <header class="bg-light lter b-b wrapper-md">
-                    <h1 class="m-n font-thin h3 text-black l-h">木鸟</h1>
+                    <h1 class="m-n font-thin h3 text-black l-h">doom</h1>
                     <small class="text-muted letterspacing">那就一直飞吧，停留枝头，也落在陆地。</small>
                 </header>
                 <div class="wrapper-md">

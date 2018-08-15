@@ -18,9 +18,9 @@ use yii\helpers\Html;
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#3a3f51"/>
     <meta http-equiv="x-dns-prefetch-control" content="on">
-    <title>木鸟-PHP开发者</title>
-    <meta name="description" content="努力生活，为了爱我的人和我爱的人"/>
-    <meta name="keywords" content="木鸟,博客,个人记录,,技术博客,PHP,JS,web开发"/>
+    <title>doom</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content="doom,博客,个人记录,,技术博客,iOS"/>
     <meta name="template" content="handsome"/>
     <?= Html::cssFile('@web/muniao/css/bootstrap.min.css') ?>
     <?= Html::cssFile('@web/muniao/css/function.min.css') ?>
@@ -52,7 +52,7 @@ use yii\helpers\Html;
             </button>
             <a href="<?= \yii\helpers\Url::toRoute(['index/index'])?>" class="navbar-brand text-lt">
                 <i class="iconfont icon-shouyeshouye"></i>
-                <span class="hidden-folded m-l-xs">木鸟</span>
+                <span class="hidden-folded m-l-xs">doom</span>
             </a>
         </div>
         <div class="collapse pos-rlt navbar-collapse box-shadow bg-dark">
@@ -80,7 +80,7 @@ use yii\helpers\Html;
                     </span>
                     <span class="clear">
                     <span class="block m-t-sm">
-                    <strong class="font-bold text-lt">木鸟</strong>
+                    <strong class="font-bold text-lt">doom</strong>
 
                     </div>
                     <div class="line dk hidden-folded"></div>

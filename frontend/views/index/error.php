@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
     <!--头部信息-->
 
-    <title>木鸟-您访问到页面不存在</title>
+    <title>doom-您访问到页面不存在</title>
     <meta name="from" content="git:NIE/nie-zt-404-20150826">
     <meta name="keywords" content="您访问到页面不存在">
     <meta name="description" content="您访问到页面不存在">
