@@ -25,6 +25,7 @@ return [
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
+            'savePath' => '/www/blog2/tmp',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
