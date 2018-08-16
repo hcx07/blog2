@@ -61,7 +61,6 @@ class User extends ActiveRecord implements IdentityInterface
             ['password','string','length'=>[6,15]],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
-//            [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
             [['re_password'],'compare','compareAttribute'=>'password'],
             ['username', 'match','pattern'=>'/^[\x{ff08}-\x{ff09}a-zA-Z\d\x{4e00}-\x{9fa5}]{2,50}$/u','message'=>'用户名由字母，数字，括号和汉字组成且在2-50字符内。'],

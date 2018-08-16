@@ -32,25 +32,29 @@ class UserController extends BackendController {
                 $hash=\Yii::$app->security->generatePasswordHash($model->password);
                 $model->password_hash=$hash;
                 $model->save();
-                \Yii::$app->session->setFlash('success', '添加成功！');
-                return $this->redirect(['user/index']);
+                exit;
             }
         }
-        return $this->render('add', ['model' => $model]);
+        return $this->renderPartial('add', ['model' => $model]);
     }
-    public function actionEdit($id)
+    public function actionEdit($id='')
     {
-        $model = User::findOne(['id'=>$id]);
-        if ($model->load(\Yii::$app->request->post())) {
-            if ($model->validate()) {
+        if ($post=\Yii::$app->request->post()) {
+            $model = User::findOne(['id' => $post['User']['id']]);
+            unset($post['User']['id']);
+            if ($model->load($post) && $model->validate()) {
                 $hash=\Yii::$app->security->generatePasswordHash($model->password);
                 $model->password_hash=$hash;
                 $model->save();
-                \Yii::$app->session->setFlash('success', '添加成功！');
-                return $this->redirect(['user/index']);
+                exit;
+            }else{
+                var_dump($model->getFirstErrors());exit;
             }
+        }else{
+            $model = User::findOne(['id'=>$id]);
+            return $this->renderPartial('edit', ['model' => $model]);
         }
-        return $this->render('add', ['model' => $model]);
+
     }
     public function actionDel($id){
         $model = User::findOne(['id'=>$id]);
