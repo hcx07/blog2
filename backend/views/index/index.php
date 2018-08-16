@@ -1,6 +1,6 @@
 <body>
 <div class="container">
-    <div class="logo"><a href="./index.html">木鸟后台管理系统</a></div>
+    <div class="logo"><a href="<?= \yii\helpers\Url::toRoute(['index/index'])?>">木鸟后台管理系统</a></div>
     <div class="left_open">
         <i title="展开左侧栏" class="iconfont">&#xe699;</i>
     </div>
