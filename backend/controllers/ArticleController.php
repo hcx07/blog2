@@ -64,7 +64,7 @@ class ArticleController extends BackendController
         }
         if (empty($category)) {
             \Yii::$app->session->setFlash('error', '还没有文章分类哟！');
-            return $this->redirect(['cate/add']);
+            return $this->redirect(['article/cate-add']);
         }
         if($post=\Yii::$app->request->post()){
             $post['content']=html_entity_decode(trim($post['content']));

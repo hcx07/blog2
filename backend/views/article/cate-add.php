@@ -40,25 +40,6 @@
     <?php \yii\bootstrap\ActiveForm::end(); ?>
 </article>
 <script type="text/javascript">
-    function hq(){
-        //声明一个随机数变量，默认为1
-        var GetRandomn = 1;
-        //js生成时间戳
-        var timestamp=new Date().getTime();
-        //获取随机范围内数值的函数
-        function GetRandom(n){
-            //由随机数+时间戳+1组成
-            GetRandomn=Math.floor(Math.random()*n+timestamp+1);
-        }
-        //开始调用，获得一个1-100的随机数
-        GetRandom("30");
-        //把随机数GetRandomn 赋给 input文本框.根据input的id
-        $('#number').val(GetRandomn);
-        //调试输出查看
-        //alert(GetRandomn);
-    }
-
-
     $("#form-article-add").validate({
         rules:{
             "Category[order_no]":{
