@@ -94,7 +94,7 @@ class IndexController extends Controller{
             }
             $model=new Guestbook();
             if($model->load($post,'') && $model->validate()){
-                if($model->username=='木鸟'){
+                if($model->username=='doom'){
                     Helper::response([],'名称不能使用与博主相同的名字哟',300);
                 }
                 $model->save();
