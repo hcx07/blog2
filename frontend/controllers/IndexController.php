@@ -94,6 +94,9 @@ class IndexController extends Controller{
             }
             $model=new Guestbook();
             if($model->load($post,'') && $model->validate()){
+                if($model->username=='木鸟'){
+                    Helper::response([],'名称不能使用与博主相同的名字哟',300);
+                }
                 $model->save();
                 $data=Guestbook::find()
                     ->where(['guest_id'=>\Yii::$app->db->lastInsertID])
