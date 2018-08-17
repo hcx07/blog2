@@ -72,10 +72,7 @@ use yii\helpers\Html;
                             <?php endif;?>
                             <div id="post-content" class="wrapper-lg">
                                 <div class="entry-content l-h-2x">
-                                    <?php
-                                    $res = preg_replace('/\/ueditor\/php\/upload\/image/', "http://blog2.com/ueditor/php/upload/image", $model->content);
-                                    echo $res;
-                                    ?>
+                                    <?=$model->content?>
                                 </div>
                                 <div class="show-foot">
                                     <div class="notebook">
