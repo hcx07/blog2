@@ -35,6 +35,7 @@ class Guestbook extends \yii\db\ActiveRecord
             [['article_id', 'flag','parent_id','two_id'], 'integer'],
             [['content'], 'string'],
             ['created_time','default','value'=>time()],
+            ['ip','default','value'=>Yii::$app->request->getUserIP()],
             [['username'], 'string', 'max' => 30],
             [['content','username','email'], 'required'],
             [['email'],'match','pattern'=>'/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/','message'=>'邮箱格式错误，请重新输入'],
@@ -56,6 +57,7 @@ class Guestbook extends \yii\db\ActiveRecord
             'email' => '邮箱',
             'created_time' => 'Intime',
             'flag' => 'Flag',
+            'ip' => 'ip',
         ];
     }
 }
