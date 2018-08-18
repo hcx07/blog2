@@ -1,0 +1,18 @@
+#开启rewrite模块
+RewriteEngine On
+#你请求的文件不存在，则请求index.php ,如果存在则访问1.htm
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#重写规则
+RewriteCond  %{HTTP_REFERER} !zhangjing.muniao.org
+RewriteCond  %{HTTP_REFERER} !blog.muniao.org
+RewriteCond  %{HTTP_REFERER} !muniao.org
+RewriteCond  %{HTTP_REFERER} !boom.muniao.org
+RewriteCond  %{HTTP_REFERER} !www.google.com
+RewriteCond  %{HTTP_REFERER} !www.baidu.com
+RewriteCond  %{HTTP_REFERER} !wap.baidu.com
+RewriteCond  %{HTTP_REFERER} !m.baidu.com
+#如果请求的是jpg,png,gif图片，就forbidden
+#RewriteRule .*\.(jpg|png|gif) -[F]
+RewriteRule .*\.(jpg|gif|png|bmp|swf|jpeg) /images/me.jpg
+
