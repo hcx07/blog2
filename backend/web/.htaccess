@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$ [NC]
+RewriteCond %{HTTP_REFERER} !muniao.org [NC]
+RewriteCond %{HTTP_REFERER} !google.com [NC]
+RewriteCond %{HTTP_REFERER} !baidu.com [NC]
+RewriteRule .(jpg|gif|png|bmp|swf|jpeg) /images/me.jpg [R,NC,L]
+#RewriteRule ^(.*)$ http://image.simcole.cn/image/$1 [L]
