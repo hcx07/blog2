@@ -14,5 +14,7 @@ RewriteCond  %{HTTP_REFERER} !wap.baidu.com
 RewriteCond  %{HTTP_REFERER} !m.baidu.com
 #如果请求的是jpg,png,gif图片，就forbidden
 #RewriteRule .*\.(jpg|png|gif) -[F]
-RewriteRule .*\.(jpg|gif|png|bmp|swf|jpeg) /images/me.jpg
+RewriteRule .*\.(jpg|gif|png|bmp|swf|jpeg) me.jpg
+
+
 
