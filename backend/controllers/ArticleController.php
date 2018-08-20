@@ -80,12 +80,10 @@ class ArticleController extends BackendController
                     $model->created_time=time();
                 }
                 $model->save();
-                \Yii::$app->session->setFlash('success', '添加成功！');
-                return $this->redirect(['article/index']);
+                Helper::response();
             }else{
                 $error=array_values($model->getFirstErrors());
-                \Yii::$app->session->setFlash('error', $error[0]);
-                return $this->redirect(['article/index']);
+                Helper::response([],$error,300);
             }
         }
         return $this->renderPartial('add', ['model' => $model, 'category' => $category]);
@@ -96,7 +94,7 @@ class ArticleController extends BackendController
      * @param $article_id
      * @return string|\yii\web\Response
      */
-    public function actionEdit($article_id)
+    public function actionEdit($article_id='')
     {
         $model = Article::findOne(['article_id' => $article_id]);
         $cate = Category::find()->asArray()->all();
@@ -110,6 +108,7 @@ class ArticleController extends BackendController
         }
         $post = \Yii::$app->request->post();
         if($post){
+            $model=Article::findOne(['article_id' => $post['article_id']]);
             $post['created_time']=strtotime(str_replace("T"," ",$post['created_time']));
             if (empty($post['content']) || (!$post['content'])) {
                 \Yii::$app->session->setFlash('error', '必须要输入内容哦！');
@@ -125,16 +124,14 @@ class ArticleController extends BackendController
                     $model->created_time=time();
                 }
                 $model->save();
-                \Yii::$app->session->setFlash('success', '修改成功！');
-                return $this->redirect(['article/index']);
+                Helper::response();
             }else{
                 $error=array_values($model->getFirstErrors());
-                \Yii::$app->session->setFlash('error', $error[0]);
-                return $this->redirect(['article/index']);
+                Helper::response([],$error,300);
             }
         }
 
-        return $this->renderPartial('add', ['model' => $model, 'category' => $category]);
+        return $this->renderPartial('edit', ['model' => $model, 'category' => $category]);
     }
 
     /**
