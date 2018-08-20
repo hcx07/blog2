@@ -10,6 +10,7 @@ RewriteCond  %{HTTP_REFERER} !www.google.com
 RewriteCond  %{HTTP_REFERER} !www.baidu.com
 RewriteCond  %{HTTP_REFERER} !wap.baidu.com
 RewriteCond  %{HTTP_REFERER} !m.baidu.com
+RewriteCond  %{HTTP_REFERER} !blog.com
 RewriteRule .*\.(jpg|gif|png|bmp|swf|jpeg) me.jpg
 
 
