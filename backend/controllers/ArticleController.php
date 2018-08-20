@@ -46,7 +46,7 @@ class ArticleController extends BackendController
             'totalCount' => $total,
             'defaultPageSize' => 10,
         ]);
-        $model = $query->offset($page->offset)->limit($page->limit)->orderBy(['article.created_time' => SORT_DESC])->all();
+        $model = $query->offset($page->offset)->limit($page->limit)->orderBy(['article.is_top'=>SORT_DESC,'article.created_time' => SORT_DESC])->all();
         $cate = Category::find()->select('cate_id,cate_name')->asArray()->all();
         return $this->render('index', ['model' => $model, 'page' => $page,'cate'=>$cate,'return'=>$return]);
     }

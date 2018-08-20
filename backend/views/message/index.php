@@ -14,7 +14,7 @@
         <form class="layui-form layui-col-md12 x-so">
             <input <?php if(isset($return['start'])):?> value="<?=$return['start']?>" <?php endif;?> class="layui-input" placeholder="开始日" name="start" id="start">
             <input <?php if(isset($return['end'])):?> value="<?=$return['end']?>" <?php endif;?> class="layui-input" placeholder="截止日" name="end" id="end">
-            <input <?php if(isset($return['title'])):?> value="<?=$return['title']?>" <?php endif;?> type="text" name="title"  placeholder="文章" autocomplete="off" class="layui-input">
+            <input <?php if(isset($return['title'])):?> value="<?=$return['title']?>" <?php endif;?> type="text" name="title"  placeholder="文章标题" autocomplete="off" class="layui-input">
             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
         <?php \yii\widgets\ActiveForm::end(); ?>
