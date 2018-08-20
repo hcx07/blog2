@@ -9,6 +9,7 @@ namespace backend\controllers;
 use backend\helpers\Helper;
 use backend\models\Article;
 use backend\models\Category;
+use common\models\Log;
 use function GuzzleHttp\Psr7\str;
 use yii\data\Pagination;
 class ArticleController extends BackendController
@@ -80,6 +81,8 @@ class ArticleController extends BackendController
                     $model->created_time=time();
                 }
                 $model->save();
+                $log=new Log();
+                $log->addLog("添加文章-".$model->title);
                 Helper::response();
             }else{
                 $error=array_values($model->getFirstErrors());
@@ -124,6 +127,8 @@ class ArticleController extends BackendController
                     $model->created_time=time();
                 }
                 $model->save();
+                $log=new Log();
+                $log->addLog("修改文章-".$model->title);
                 Helper::response();
             }else{
                 $error=array_values($model->getFirstErrors());
@@ -141,10 +146,17 @@ class ArticleController extends BackendController
         $get=\Yii::$app->request->get();
         $article_id=$get['article_id'];
         $model=Article::findOne(['article_id'=>$article_id]);
+        $log=new Log();
         if(isset($get['status'])){//显示隐藏
+            if($get['status']==1){
+                $str='显示文章-';
+            }else{
+                $str='隐藏文章-';
+            }
             $model->status=$get['status'];
             $res=$model->update();
-            if($res>=0){
+            if($res!==false){
+                $log->addLog($str.$model->title);
                 Helper::response([],'操作成功');
             }else{
                 $error=array_values($model->getFirstErrors());
@@ -152,9 +164,15 @@ class ArticleController extends BackendController
             }
         }
         if(isset($get['is_top'])){//置顶
+            if($get['is_top']==1){
+                $str='置顶文章-';
+            }else{
+                $str='取消置顶文章-';
+            }
             $model->is_top=$get['is_top'];
             $res=$model->update();
             if($res>=0){
+                $log->addLog($str.$model->title);
                 Helper::response([],'操作成功');
             }else{
                 $error=array_values($model->getFirstErrors());
@@ -189,7 +207,8 @@ class ArticleController extends BackendController
         $model = new Category();
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             $model->save();
-            \Yii::$app->session->setFlash('success', '添加成功！');
+            $log=new Log();
+            $log->addLog('添加分类-'.$model->cate_name);
             exit;
         }
         return $this->renderPartial('cate-add', ['model' => $model]);
@@ -216,6 +235,8 @@ class ArticleController extends BackendController
         unset($post['Category']['cate_id']);
         if ($model->load($post) && $model->validate()) {
             $model->save();
+            $log=new Log();
+            $log->addLog('修改分类-'.$model->cate_name);
             exit;
         }
     }
@@ -234,6 +255,8 @@ class ArticleController extends BackendController
         }
         $model = Category::findOne(['cate_id' => $cate_id]);
         $model->delete();
+        $log=new Log();
+        $log->addLog('删除分类-'.$result->cate_name);
         \Yii::$app->session->setFlash('success', '删除成功！');
         return $this->redirect(['article/cate']);
     }
