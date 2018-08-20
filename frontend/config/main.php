@@ -43,6 +43,9 @@ return [
             'showScriptName' => false,
             'suffix'=>'.html',
             'rules' => [
+                // index/article.html?article_id=10 重写为 index/article/10.html
+                '<controller:\w+>/article/<article_id:\d+>' => '<controller>/article',
+                '<controller:\w+>/cate/<cate_id:\d+>' => '<controller>/cate',
             ],
         ],
 
