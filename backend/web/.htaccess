@@ -1,0 +1,16 @@
+#开启rewrite模块
+RewriteEngine On
+#重写规则
+RewriteCond  %{HTTP_REFERER} !^$ [NC]
+RewriteCond  %{HTTP_REFERER} !zhangjing.muniao.org
+RewriteCond  %{HTTP_REFERER} !blog.muniao.org
+RewriteCond  %{HTTP_REFERER} !muniao.org
+RewriteCond  %{HTTP_REFERER} !boom.muniao.org
+RewriteCond  %{HTTP_REFERER} !www.google.com
+RewriteCond  %{HTTP_REFERER} !www.baidu.com
+RewriteCond  %{HTTP_REFERER} !wap.baidu.com
+RewriteCond  %{HTTP_REFERER} !m.baidu.com
+RewriteRule .*\.(jpg|gif|png|bmp|swf|jpeg) me.jpg
+
+
+
