@@ -9,6 +9,7 @@
 namespace backend\controllers;
 
 
+use common\models\Log;
 use common\models\Url;
 use yii\data\Pagination;
 
@@ -37,6 +38,8 @@ class UrlController extends BackendController
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             $model->created_time=time();
             $model->save();
+            $log=new Log();
+            $log->addLog('添加友链-'.$model->name);
             \Yii::$app->session->setFlash('success', '添加成功！');
             exit;
         }
@@ -44,7 +47,7 @@ class UrlController extends BackendController
     }
 
     /**
-     * 分类修改页面
+     * 修改页面
      * @param $cate_id
      * @return string
      */
@@ -55,7 +58,7 @@ class UrlController extends BackendController
     }
 
     /**
-     * 分类修改
+     * 修改
      */
     public function actionDoEdit()
     {
@@ -69,7 +72,7 @@ class UrlController extends BackendController
     }
 
     /**
-     * 删除分类
+     * 删除
      * @param $cate_id
      * @return \yii\web\Response
      */
@@ -78,6 +81,8 @@ class UrlController extends BackendController
         $model = Url::findOne(['url_id' => $url_id]);
         $model->status=1;
         $model->save();
+        $log=new Log();
+        $log->addLog('删除友链-'.$model->name);
         \Yii::$app->session->setFlash('success', '删除成功！');
         return $this->redirect(['url/index']);
     }

@@ -6,6 +6,7 @@
  * Time: 10:37
  */
 namespace backend\controllers;
+use common\models\Log;
 use common\models\User;
 use yii\data\Pagination;
 use yii\web\Controller;
@@ -32,6 +33,8 @@ class UserController extends BackendController {
                 $hash=\Yii::$app->security->generatePasswordHash($model->password);
                 $model->password_hash=$hash;
                 $model->save();
+                $log=new Log();
+                $log->addLog('添加管理员-'.$model->username);
                 exit;
             }
         }
@@ -46,6 +49,8 @@ class UserController extends BackendController {
                 $hash=\Yii::$app->security->generatePasswordHash($model->password);
                 $model->password_hash=$hash;
                 $model->save();
+                $log=new Log();
+                $log->addLog('修改管理员-'.$model->username);
                 exit;
             }else{
                 var_dump($model->getFirstErrors());exit;
@@ -59,6 +64,8 @@ class UserController extends BackendController {
     public function actionDel($id){
         $model = User::findOne(['id'=>$id]);
         $model->delete();
+        $log=new Log();
+        $log->addLog('删除管理员-'.$model->username);
         return $this->redirect(['user/index']);
     }
 }

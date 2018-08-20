@@ -18,6 +18,7 @@ class Guestbook extends \yii\db\ActiveRecord
 {
     public $son;
     public $reply;
+    public $title;
     /**
      * @inheritdoc
      */
