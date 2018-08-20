@@ -66,11 +66,6 @@ AppAsset::register($this);
                         'template'=>'<input type="text" id="loginform-code" class="input-text size-L"  style="width:150px;  placeholder="验证码"  name="LoginForm[code]" aria-invalid="true">&nbsp;&nbsp;&nbsp;{image}'
                     ])->label(false);?>
                 </div>
-                <div class="formControls col-xs-8 col-xs-offset-3" style="margin-left:25%;">
-                    <label >
-                        <?= $form->field($model, 'rememberMe')->checkbox()->label(false) ?>
-                    </label>
-                </div>
                 <div class="formControls col-xs-8 col-xs-offset-3">
                     <?= \yii\helpers\Html::submitButton('&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;', ['class' => 'btn btn-success radius size-L', 'name' => 'login-button']) ?>
                 </div>
