@@ -29,7 +29,7 @@
         <ul id="nav">
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
+                    <i class="iconfont">&#xe6a2;</i>
                     <cite>文章管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -45,7 +45,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
+                    <i class="iconfont">&#xe699;</i>
                     <cite>分类管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -61,7 +61,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
+                    <i class="iconfont">&#xe69b;</i>
                     <cite>留言管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -76,7 +76,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
+                    <i class="iconfont">&#xe6c0;</i>
                     <cite>友情链接管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -91,7 +91,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
+                    <i class="iconfont">&#xe6fc;</i>
                     <cite>操作日志</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -106,7 +106,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe726;</i>
+                    <i class="iconfont">&#xe6b8;</i>
                     <cite>管理员管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
