@@ -22,7 +22,7 @@ use yii\helpers\Url;
     $form = \yii\bootstrap\ActiveForm::begin([
         'options' => ['class' => 'form form-horizontal', 'id' => 'form-article-add']
     ]); ?>
-
+    <input type="hidden" name="article_id" value="<?=$model->article_id?>">
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
         <div class="formControls col-xs-8 col-sm-9">
@@ -59,7 +59,7 @@ use yii\helpers\Url;
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>作者：</label>
         <div class="formControls col-xs-8 col-sm-9">
-            <?= $form->field($model, 'author')->textInput(['class' => 'input-text','value'=>'doom'])->label(false) ?>
+            <?= $form->field($model, 'author')->textInput(['class' => 'input-text','value'=>'木鸟'])->label(false) ?>
         </div>
     </div>
     <div class="row cl">
@@ -117,11 +117,11 @@ use yii\helpers\Url;
         submitHandler:function(form){
             $(form).ajaxSubmit({
                 type: 'post',
-                url: '<?=\yii\helpers\Url::toRoute(['article/add'])?>',
+                url: '<?=\yii\helpers\Url::toRoute(['article/edit'])?>',
                 success: function(data) {
                     console.log(data);
                     if(data.code==200){
-                        layer.msg('添加成功', {icon: 1, time: 2000}, function () {
+                        layer.msg('编辑成功', {icon: 1, time: 2000}, function () {
                             setTimeout("window.parent.location.reload()", 1);
                         });
                     }else{
