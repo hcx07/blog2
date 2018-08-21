@@ -44,12 +44,6 @@ use yii\helpers\Html;
 <div id="alllayout" class="app app-aside-fixed container app-header-fixed ">
     <header id="header" class="app-header navbar" role="menu">
         <div class="navbar-header bg-dark">
-            <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
-                <i class="fa fa-gear text-lg"></i>
-            </button>
-            <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
-                <i class="fa fa-menu text-lg"></i>
-            </button>
             <a href="<?= \yii\helpers\Url::toRoute(['index/index'])?>" class="navbar-brand text-lt">
                 <i class="iconfont icon-shouyeshouye"></i>
                 <span class="hidden-folded m-l-xs">木鸟</span>
