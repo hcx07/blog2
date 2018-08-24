@@ -77,7 +77,7 @@ use yii\helpers\Html;
                                 <div class="show-foot">
                                     <div class="notebook">
                                         <i class="fa fa-clock-o"></i>
-                                        <span>最后修改：<?= date('Y-m-d H:i:s') ?></span>
+                                        <span>最后修改：<?= date('Y-m-d H:i:s',$model->update_time) ?></span>
                                     </div>
                                     <div class="copyright" data-toggle="tooltip" data-html="true"
                                          data-original-title="转载请联系作者获得授权，并注明转载地址"><span>© 著作权归作者所有</span>
