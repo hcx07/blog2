@@ -75,6 +75,7 @@ use yii\helpers\Html;
                     <span class="clear">
                     <span class="block m-t-sm">
                     <strong class="font-bold text-lt">木鸟</strong>
+                        <span>hcx_0711@hotmail.com</span>
 
                     </div>
                     <div class="line dk hidden-folded"></div>
@@ -215,8 +216,13 @@ use yii\helpers\Html;
 </div>
 </main>
 </div>
-
-</div
+<div class="wrapper b-t bg-light">
+    <span class="pull-right hidden-xs">
+        <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备17020515号</a>
+    </span>
+    Copyright © 2017-<?=date('Y')?> 木鸟 All Rights Reserved
+</div>
+</div>
 <?= Html::jsFile('@web/muniao/js/meting.min.js') ?>
 <?= Html::jsFile('@web/muniao/js/bootstrap.min.js') ?>
 <?= Html::jsFile('@web/muniao/js/jquery.pjax.min.js') ?>
