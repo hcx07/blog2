@@ -75,7 +75,6 @@ use yii\helpers\Html;
                     <span class="clear">
                     <span class="block m-t-sm">
                     <strong class="font-bold text-lt">木鸟</strong>
-                        <span>hcx_0711@hotmail.com</span>
 
                     </div>
                     <div class="line dk hidden-folded"></div>
