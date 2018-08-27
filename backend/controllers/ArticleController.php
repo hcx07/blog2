@@ -77,8 +77,10 @@ class ArticleController extends BackendController
             if($model->load($post) && $model->load($post,'') && $model->validate()){
                 if($post['created_time']){
                     $model->created_time=$post['created_time'];
+                    $model->update_time=$post['created_time'];
                 }else{
                     $model->created_time=time();
+                    $model->update_time=time();
                 }
                 $model->save();
                 $log=new Log();
@@ -123,8 +125,13 @@ class ArticleController extends BackendController
                 }
                 if($post['created_time']){
                     $model->created_time=$post['created_time'];
+                    $model->update_time=$post['created_time'];
                 }else{
-                    $model->created_time=time();
+                    if($post['created_time']>time()){
+                        $model->update_time=$post['created_time'];
+                    }else{
+                        $model->update_time=time();
+                    }
                 }
                 $model->save();
                 $log=new Log();
