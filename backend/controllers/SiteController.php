@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use backend\models\LoginForm;
+use common\models\Log;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -86,6 +87,8 @@ class SiteController extends Controller
         }
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $log=new Log();
+            $log->addLog("登录-".$model->username.'-'.Yii::$app->request->getUserIP());
             return $this->redirect(['index/index']);
         }
         return $this->renderPartial('login',['model'=>$model]);
