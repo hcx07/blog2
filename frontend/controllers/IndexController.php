@@ -175,6 +175,7 @@ class IndexController extends Controller{
         $article=$model
             ->limit(2)
             ->asArray()
+            ->orderBy("rand()")
             ->all();
         Helper::response(['hot'=>$hot,'guest'=>$guest,'article'=>$article]);
     }
