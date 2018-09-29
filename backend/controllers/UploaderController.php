@@ -184,7 +184,11 @@ class UploaderController extends Controller
             @fclose($out);
         }
 //        $url = Url::to(Yii::getAlias("@web")."/".$uploadPath,true);
-        $url=Qiniu::auth('./'.$uploadPath,$uploadPath);
+        if(is_file('./'.$uploadPath)){
+            $url=Qiniu::auth('./'.$uploadPath,$uploadPath);
+        }else{
+            $url = Url::to(Yii::getAlias("@web")."/".$uploadPath,true);
+        }
         // Return Success JSON-RPC response
         return json_encode($url);
     }
