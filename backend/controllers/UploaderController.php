@@ -193,7 +193,7 @@ class UploaderController extends Controller
      */
     public function actionUpload(){
         $url=Yii::$app->request->post('url');
-        if(!$url){
+        if(!$url || !is_file($url)){
             return json_encode($url);
         }
         $url=Qiniu::auth($url,'editor/'.date('Ymd').'/'.basename($url));
