@@ -56,7 +56,7 @@ if (isset($_GET["callback"])) {
     }
 } else {
     $res=json_decode($result,1);
-    $res['url']=http_post('http://blog.com/index.php?r=uploader/upload',['url'=>'.'.$res['url']]);
+    $res['url']=http_post('http://zhangjing.muniao.org/index.php?r=uploader/upload',['url'=>'.'.$res['url']]);
     echo json_encode($res);
 }
 
