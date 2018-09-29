@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "410be2f8f06afec8338da4f82e7172ec",
+    "content-hash": "88093b2542dd1edcede63be42950a8ed",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -511,6 +511,57 @@
             ],
             "description": "desc",
             "time": "2018-05-08T05:12:22+00:00"
+        },
+        {
+            "name": "qiniu/php-sdk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/qiniu/php-sdk.git",
+                "reference": "4c4f9b819f420b77bc7313b7d5ee6d33f1139df6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/qiniu/php-sdk/zipball/4c4f9b819f420b77bc7313b7d5ee6d33f1139df6",
+                "reference": "4c4f9b819f420b77bc7313b7d5ee6d33f1139df6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Qiniu\\": "src/Qiniu"
+                },
+                "files": [
+                    "src/Qiniu/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Qiniu",
+                    "email": "sdk@qiniu.com",
+                    "homepage": "http://www.qiniu.com"
+                }
+            ],
+            "description": "Qiniu Resource (Cloud) Storage SDK for PHP",
+            "homepage": "http://developer.qiniu.com/",
+            "keywords": [
+                "cloud",
+                "qiniu",
+                "sdk",
+                "storage"
+            ],
+            "time": "2018-06-25T02:55:51+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3642,7 +3693,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "kartik-v/bootstrap-fileinput": 20
+        "kartik-v/bootstrap-fileinput": 20,
+        "qiniu/php-sdk": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

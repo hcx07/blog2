@@ -55,5 +55,21 @@ if (isset($_GET["callback"])) {
         ));
     }
 } else {
-    echo $result;
+    $res=json_decode($result,1);
+    $res['url']=http_post('http://blog.com/index.php?r=uploader/upload',['url'=>'.'.$res['url']]);
+    echo json_encode($res);
+}
+
+function http_post($url,$data){
+    $curl_handle=curl_init();
+    curl_setopt($curl_handle,CURLOPT_URL, $url);
+    curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl_handle,CURLOPT_HEADER, 0);
+    curl_setopt($curl_handle,CURLOPT_POST, true);
+    curl_setopt($curl_handle,CURLOPT_POSTFIELDS, $data);
+    curl_setopt($curl_handle,CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($curl_handle,CURLOPT_SSL_VERIFYPEER, 0);
+    $response =curl_exec($curl_handle);
+    curl_close($curl_handle);
+    return $response;
 }
