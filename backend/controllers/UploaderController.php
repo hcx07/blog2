@@ -196,7 +196,7 @@ class UploaderController extends Controller
         if(!$url){
             return json_encode($url);
         }
-        $url=Qiniu::auth($url,date('Ymd').'/editor/'.basename($url));
+        $url=Qiniu::auth($url,'editor/'.date('Ymd').'/'.basename($url));
         return $url;
     }
 
