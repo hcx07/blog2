@@ -239,7 +239,11 @@ use yii\helpers\Html;
         }
     });
     $('#keyword').click(function () {
-        window.location.href="<?= \yii\helpers\Url::toRoute(['index/index'])?>?search=".$(this).val();
+        var key=$(this).val();
+        if(!key){
+            layer.alert('请输入关键字');
+        }
+        window.location.href="<?= \yii\helpers\Url::toRoute(['index/index'])?>?search=".key;
     });
     ajax_post("<?= \yii\helpers\Url::toRoute(['index/get-hot'])?>",{},function (res) {
         var hot=res.data.hot;
