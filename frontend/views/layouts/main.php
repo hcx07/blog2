@@ -227,7 +227,6 @@ use yii\helpers\Html;
 <?= Html::jsFile('@web/muniao/js/jquery.pjax.min.js') ?>
 <?= Html::jsFile('@web/muniao/js/jquery.fancybox.min.js') ?>
 <?= Html::jsFile('@web/muniao/js/owo.min.js') ?>
-<?= Html::jsFile('@web/muniao/js/music.min.js') ?>
 <?= Html::jsFile('@web/muniao/js/function.min.js') ?>
 <script>
     $('.auto').click(function () {
