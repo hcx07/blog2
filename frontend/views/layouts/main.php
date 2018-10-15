@@ -50,7 +50,7 @@ use yii\helpers\Html;
             </a>
         </div>
         <div class="collapse pos-rlt navbar-collapse box-shadow bg-dark">
-            <form id="searchform" class="navbar-form navbar-form-sm navbar-left shift" method="get" role="search" href="<?= \yii\helpers\Url::toRoute(['index/index'])?>">
+            <form id="searchform" class="navbar-form navbar-form-sm navbar-left shift" method="get" role="search" action="<?= \yii\helpers\Url::toRoute(['index/index'])?>">
                 <div class="form-group">
                     <div class="input-group">
                         <input data-instant id="keyword" type="search" name="search" class="form-control input-sm bg-light no-border rounded padder" required placeholder="输入关键词搜索" value="<?=Yii::$app->request->get('search')?>">
