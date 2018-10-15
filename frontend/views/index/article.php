@@ -32,8 +32,7 @@ use yii\helpers\Html;
                                 }
                                 ?></a></li>
                         <li class="meta-categories"><i class="fa fa-tags" aria-hidden="true"></i> <span class="sr-only">分类：</span>
-                            <span class="meta-value"><a
-                                        href="<?= \yii\helpers\Url::toRoute(['index/cate', 'cate_id' => $model->cate_id]) ?>"><?= $model->cate_name ?></a></span>
+                            <span class="meta-value"><a href="<?= \yii\helpers\Url::toRoute(['index/cate', 'cate_id' => $model->cate_id]) ?>"><?= $model->cate_name ?></a></span>
                         </li>
                     </ul>
                 </header>
