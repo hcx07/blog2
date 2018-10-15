@@ -222,7 +222,6 @@ use yii\helpers\Html;
     Copyright © 2017-<?=date('Y')?> 木鸟 All Rights Reserved
 </div>
 </div>
-<?= Html::jsFile('@web/muniao/js/meting.min.js') ?>
 <?= Html::jsFile('@web/muniao/js/bootstrap.min.js') ?>
 <?= Html::jsFile('@web/muniao/js/jquery.pjax.min.js') ?>
 <?= Html::jsFile('@web/muniao/js/jquery.fancybox.min.js') ?>
