@@ -50,12 +50,12 @@ use yii\helpers\Html;
             </a>
         </div>
         <div class="collapse pos-rlt navbar-collapse box-shadow bg-dark">
-            <form id="searchform" class="navbar-form navbar-form-sm navbar-left shift" method="post" role="search" action="">
+            <form id="searchform" class="navbar-form navbar-form-sm navbar-left shift" method="get" role="search" href="<?= \yii\helpers\Url::toRoute(['index/index'])?>">
                 <div class="form-group">
                     <div class="input-group">
                         <input data-instant id="keyword" type="search" name="search" class="form-control input-sm bg-light no-border rounded padder" required placeholder="输入关键词搜索" value="<?=Yii::$app->request->get('search')?>">
                         <span class="input-group-btn">
-                        <button data-instant type="submit" class="btn btn-sm bg-light rounded search-keys"><i class="fa fa-search"></i></button>
+                        <button data-instant type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
                         </span>
                     </div>
                 </div>
@@ -236,12 +236,6 @@ use yii\helpers\Html;
             ul.attr('class','nav nav-sup dk');
         }else{
             ul.attr('class','nav nav-sub dk');
-        }
-    });
-    $('.search-keys').click(function () {
-        var key=$('#keyword').val();
-        if(key!=undefined && key){
-            window.location.href="<?= \yii\helpers\Url::toRoute(['index/index'])?>?search=".key;
         }
     });
     ajax_post("<?= \yii\helpers\Url::toRoute(['index/get-hot'])?>",{},function (res) {
