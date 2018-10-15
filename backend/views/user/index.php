@@ -26,7 +26,9 @@
             <td><?=$admin->updated_at?date('Y-m-d H:i:s',$admin->updated_at):'未修改'?></td>
             <td>
                 <a title="修改" href="javascript:;" onclick="x_admin_show('修改','<?=\yii\helpers\Url::toRoute(['user/edit','id'=>$admin->id])?>','600','400')" class="ml-5" style="text-decoration:none">修改</a>
-                <a href="javascript:;" class="del" name="<?=$admin->id?>">删除</a>
+                <?php if($admin->id!=1):?>
+                    <a href="javascript:;" class="del" name="<?=$admin->id?>">删除</a>
+                <?php endif;?>
             </td>
         </tr>
         <?php endforeach;?>
