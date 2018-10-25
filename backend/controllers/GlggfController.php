@@ -1,5 +1,13 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 2018/10/25
+ * Time: 16:18
+ */
+
 namespace backend\controllers;
+
 
 use backend\models\LoginForm;
 use common\models\Log;
@@ -8,10 +16,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-/**
- * Site controller
- */
-class SiteController extends Controller
+class GlggfController extends Controller
 {
     /**
      * @inheritdoc
@@ -24,7 +29,7 @@ class SiteController extends Controller
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['Zuazf', 'error'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -70,7 +75,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if(Yii::$app->user->isGuest){
-            return $this->redirect(['site/login']);
+            return $this->redirect(['glggf/zuazf']);
         }
         return $this->redirect(['index/index']);
     }
@@ -79,10 +84,10 @@ class SiteController extends Controller
      * Login action.
      *
      * @return string
+     * 登陆
      */
-    public function actionLogin()
+    public function actionZuazf()
     {
-        exit('登陆地址错误');
         if (!Yii::$app->user->isGuest) {
             return $this->redirect(['index/index']);
         }
@@ -92,7 +97,7 @@ class SiteController extends Controller
             $log->addLog("登录-".$model->username.'-'.Yii::$app->request->getUserIP());
             return $this->redirect(['index/index']);
         }
-        return $this->renderPartial('login',['model'=>$model]);
+        return $this->renderPartial('zuazf',['model'=>$model]);
     }
     /**
      * Logout action.
@@ -103,6 +108,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect(['glggf/zuazf']);
     }
+
 }

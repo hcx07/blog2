@@ -10,7 +10,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd>
                     <?php
-                    echo \yii\helpers\Html::beginForm(['/site/logout'], 'post');
+                    echo \yii\helpers\Html::beginForm(['/glggf/logout'], 'post');
                     echo \yii\helpers\Html::submitButton(
                         '安全退出',
                         ['class' => 'btn btn-link logout']
