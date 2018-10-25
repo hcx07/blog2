@@ -8,8 +8,8 @@
 
 namespace backend\controllers;
 
+use backend\models\Qiniu;
 use Yii;
-use app\helpers\Helper;
 use yii\helpers\Url;
 use yii\web\Controller;
 
@@ -24,7 +24,7 @@ class UploaderController extends Controller
     public function actionWebUpload(){
         $img_type = $_REQUEST['img_type'];
         if(empty($img_type)){
-            return Helper::responseHttp([],"图片类型未给",401);
+            return false;
         }else{
             $img_type |=0;
         }
@@ -183,9 +183,25 @@ class UploaderController extends Controller
             }
             @fclose($out);
         }
-        $url = Url::to(Yii::getAlias("@web")."/".$uploadPath,true);
+//        $url = Url::to(Yii::getAlias("@web")."/".$uploadPath,true);
+        if(is_file('./'.$uploadPath)){
+            $url=Qiniu::auth('./'.$uploadPath,$uploadPath);
+        }else{
+            $url = Url::to(Yii::getAlias("@web")."/".$uploadPath,true);
+        }
         // Return Success JSON-RPC response
         return json_encode($url);
+    }
+    /**
+     * 百度编辑器上传
+     */
+    public function actionUpload(){
+        $url=Yii::$app->request->post('url');
+        if(!$url || !is_file($url)){
+            return json_encode($url);
+        }
+        $url=Qiniu::auth($url,'editor/'.date('Ymd').'/'.basename($url));
+        return $url;
     }
 
 }

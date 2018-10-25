@@ -361,12 +361,13 @@ class Uploader
     {
         return array(
             "state" => $this->stateInfo,
-            "url" => 'http://'.$_SERVER['HTTP_HOST'].$this->fullName,
+            "url" => $this->fullName,
             "title" => $this->fileName,
             "original" => $this->oriName,
             "type" => $this->fileType,
             "size" => $this->fileSize
         );
     }
+
 
 }

@@ -10,6 +10,7 @@ use common\models\Log;
 use common\models\User;
 use yii\data\Pagination;
 use yii\web\Controller;
+use yii\web\Session;
 
 class UserController extends BackendController {
 
@@ -63,6 +64,10 @@ class UserController extends BackendController {
     }
     public function actionDel($id){
         $model = User::findOne(['id'=>$id]);
+        if($model->id==1){
+            \Yii::$app->session->setFlash('error','改管理员能删除哟');
+            return $this->redirect(['user/index']);
+        }
         $model->delete();
         $log=new Log();
         $log->addLog('删除管理员-'.$model->username);
