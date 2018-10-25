@@ -4,9 +4,9 @@ return [
     'supportEmail' => 'support@example.com',
     'user.passwordResetTokenExpire' => 3600,
     'qiniu'=>[
-        'accessKey'=>'zt7cYHq5mPq7-UAM8zr7losB03xUBQsOC15KYgKA',
-        'secretKey'=>'h04GEOs7cwKVoA0SjZ5GLF_pT1-QPUjq-qunCUpz',
-        'bucket'=>'blog',
-        'url'=>'http://file.muniao.org/'
+        'accessKey'=>'FpnAGMCzdkWbfEIDnLec6VijiUnpQ8vqGZNiF3yf',
+        'secretKey'=>'ibvZiurkIhBJxu1shs1RniXfbrURfkAgg56G-FHS',
+        'bucket'=>'doommedia',
+        'url'=>'http://six.muniao.org/'
     ],
 ];
