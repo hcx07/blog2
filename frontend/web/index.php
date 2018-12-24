@@ -23,7 +23,7 @@ $fp = fopen("./log/$h.txt", "a+");
 $url=Yii::$app->request->getHostInfo().Yii::$app->request->url;
 $ip=Yii::$app->request->getUserIP();
 $HTTP_REFERER=array_key_exists('HTTP_REFERER',$_SERVER)?$_SERVER['HTTP_REFERER']:'';
-fwrite($fp, date("Y-m-d H:i:s") . ' url:' . $url .' ip:'.$ip.' HTTP_REFERER:'.$HTTP_REFERER.' mobile:'.$log->getPhoneNumber().' PhoneType:'.$log->getPhoneType() ."\r\n");
+fwrite($fp, date("Y-m-d H:i:s") . ' url:' . $url .' ip:'.$ip.' HTTP_REFERER:'.$HTTP_REFERER.' browser:'.$log->GetBrowser().' lang:'.$log->GetLang().'os:'.$log->GetOs() ."\r\n");
 fclose($fp);
 ?>
 <script>
