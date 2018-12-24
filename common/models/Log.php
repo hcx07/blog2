@@ -90,7 +90,7 @@ class Log extends \yii\db\ActiveRecord
             }else {
                 $br = 'Other';
             }
-            return json_encode("浏览器为".$br);
+            return "浏览器为".$br;
         }else{
             return "获取浏览器信息失败！";}
     }
@@ -107,7 +107,7 @@ class Log extends \yii\db\ActiveRecord
             }else{
                 $lang = "English";
             }
-            return json_encode("浏览器语言为".$lang);
+            return "浏览器语言为".$lang;
         }else{
             return "获取浏览器语言失败！";
         }
@@ -240,7 +240,7 @@ class Log extends \yii\db\ActiveRecord
         {
             $os = '未知操作系统';
         }
-        return json_encode("系统为".$os);
+        return "系统为".$os;
     }
 
 }
