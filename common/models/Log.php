@@ -158,6 +158,16 @@ class Log extends \yii\db\ActiveRecord
         {
             $os = 'Windows 32';
         }
+        else if (strpos($agent, 'Android') !== false) {//strpos()定位出第一次出现字符串的位置，这里定位为0
+            preg_match("/(?<=Android )[\d\.]{1,}/", $agent, $version);
+            $os = 'Platform:Android OS_Version:'.$version[0];
+        } elseif (strpos($agent, 'iPhone') !== false) {
+            preg_match("/(?<=CPU iPhone OS )[\d\_]{1,}/", $agent, $version);
+            $os = 'Platform:iPhone OS_Version:'.str_replace('_', '.', $version[0]);
+        } elseif (strpos($agent, 'iPad') !== false) {
+            preg_match("/(?<=CPU OS )[\d\_]{1,}/", $agent, $version);
+            $os = 'Platform:iPad OS_Version:'.str_replace('_', '.', $version[0]);
+        }
         else if (preg_match('/linux/i', $agent))
         {
             $os = 'Linux';
@@ -225,16 +235,6 @@ class Log extends \yii\db\ActiveRecord
         else if (preg_match('/offline/i', $agent))
         {
             $os = 'offline';
-        }
-        else if (strpos($agent, 'Android') !== false) {//strpos()定位出第一次出现字符串的位置，这里定位为0
-            preg_match("/(?<=Android )[\d\.]{1,}/", $agent, $version);
-            $os = 'Platform:Android OS_Version:'.$version[0];
-        } elseif (strpos($agent, 'iPhone') !== false) {
-            preg_match("/(?<=CPU iPhone OS )[\d\_]{1,}/", $agent, $version);
-            $os = 'Platform:iPhone OS_Version:'.str_replace('_', '.', $version[0]);
-        } elseif (strpos($agent, 'iPad') !== false) {
-            preg_match("/(?<=CPU OS )[\d\_]{1,}/", $agent, $version);
-            $os = 'Platform:iPad OS_Version:'.str_replace('_', '.', $version[0]);
         }
         else
         {
