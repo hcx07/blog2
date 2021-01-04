@@ -217,7 +217,7 @@ use yii\helpers\Html;
 </div>
 <div class="wrapper b-t bg-light">
     <span class="pull-right hidden-xs">
-        <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备17020515号</a>
+        <a href="https://beian.miit.gov.cn" target="_blank">蜀ICP备17020515号-1</a>
     </span>
     Copyright © 2017-<?=date('Y')?> 木鸟 All Rights Reserved
 </div>
