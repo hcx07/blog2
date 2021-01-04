@@ -40,3 +40,4 @@ phpunit.phar
 /backend/config/main-local.php
 /common/config/main-local.php
 assets
+/backend/web/ueditor/php/upload
